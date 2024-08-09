@@ -1,0 +1,38 @@
+.LbSec {
+  display: flex; /* Main container layout */
+}
+
+.LbSec_menu {
+  color: #000000;
+  font-size: 16px;
+  border-right: 1px solid black;
+  display: flex;
+  padding: 40px 12px 0px 135px;
+  flex: 1 1 20%;
+}
+
+.LbSec_menuChild{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.LbSec_menuText {
+    /* width: 30%; */
+  display: flex;
+  align-items: center;
+  gap: 51px;
+  justify-content: space-between;
+}
+
+.LbSec_banner {
+  /* z-index: -1; */
+  padding: 40px 135px 0px 45px;
+  flex: 1 1 70%;
+  display: flex; /* Banner layout */
+  width: 70%; /* Set a fixed width for the banner */
+}
+
+
+ 

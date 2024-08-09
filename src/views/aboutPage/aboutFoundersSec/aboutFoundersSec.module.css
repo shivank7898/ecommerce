@@ -1,0 +1,38 @@
+.aboutFouSec_main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 70px 140px 135px;
+  /* margin-bottom: 70px; */
+}
+
+.aboutFouSec_sliderCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aboutFouSec_sliderCard_img {
+  margin-bottom: 24px;
+}
+
+.aboutFouSec_sliderCard_head {
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.aboutFouSec_sliderCard_desc {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.aboutFouSec_sliderCard_icons{
+    display: flex;
+    gap: 16px;
+}
+
+.aboutFouSec_sliderCard_icon{
+    width: 24px;
+    height: 24px;
+}

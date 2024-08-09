@@ -1,0 +1,53 @@
+.LASec_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.LASec_child {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 60px;
+  padding: 0px 135px;
+}
+
+.LASec_images {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.LASec_images img {
+  cursor: pointer;
+}
+
+.LASec_images_left{
+  width: 48.5%;
+}
+
+.LASec_images_left img{
+  width: 100%;
+}
+
+.LASec_images_right {
+  width: 48.5%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.LASec_images_right_top img{
+  width: 100%;
+}
+
+.LASec_images_right_btm {
+  display: flex;
+  gap: 30px;
+}
+
+.LASec_images_right_btm img{
+  width: 47%;
+}

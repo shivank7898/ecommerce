@@ -1,0 +1,26 @@
+.SignUpSec_main{
+    width: 100%;
+    padding: 60px 0px 140px;
+}
+
+.SignUpSec_child{
+    /* width: 100%; */
+    display: flex;
+}
+
+.SignUpSec_img{
+    width: 50%;
+}
+
+.SignUpSec_img img{
+    width: 100%;
+}
+
+.SignUpSec_form{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

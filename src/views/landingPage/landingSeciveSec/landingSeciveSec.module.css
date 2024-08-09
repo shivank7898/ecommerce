@@ -1,0 +1,33 @@
+.LSerSec_main {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  margin-top: 70px;
+  margin-bottom: 140px;
+}
+
+.LSerSec_child {
+  display: flex;
+  flex-wrap: wrap; /* Allow services to wrap on smaller screens */
+  gap: 88px;
+}
+
+.LSerSec_service {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.LSerSec_service_content {
+}
+
+.LSerSec_service_content_head {
+  font-size: 20px;
+  font-weight: 600; /* Make the heading bold */
+  /* Add some space between heading and paragraph */
+}
+
+.LSerSec_service_content_para {
+   font-size: 14px;
+  font-weight: 400; 
+}

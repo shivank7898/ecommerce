@@ -1,0 +1,25 @@
+.LfSec_main{
+  display: flex;
+  justify-content: center;
+}
+
+.LfSec_child {
+   padding: 0px 0px 0px 135px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3.333rem; /*40px / 12 = 3.333rem*/
+  margin-top: 11.667rem ; /*140px */
+}
+
+.LfSec_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LfSec_divider {
+  border: 0.0083rem solid #b3b3b360; /* 0.1px / 12 = 0.0083rem */
+  width: 90%; /* 90px / 12 = 7.5rem */
+}

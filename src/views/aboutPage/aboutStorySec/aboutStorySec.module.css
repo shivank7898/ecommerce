@@ -1,0 +1,39 @@
+.aboutStorySec_main {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding-top: 143px;
+  margin-bottom: 70px;
+}
+
+.aboutStorySec_left_child {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.aboutStorySec_left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.aboutStorySec_head {
+  font-size: 54px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.aboutStorySec_para {
+    color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.aboutStorySec_right img {
+  width: 100%;
+}

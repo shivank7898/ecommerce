@@ -1,0 +1,60 @@
+/* src/components/ProductRow/ProductRow.module.css */
+
+.productRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px;
+  /* border-bottom: 1px solid #ddd; */
+  box-shadow: 5px 0px 13px 0px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+}
+
+.productInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.productImage {
+  max-width: 48px;
+  /* height: 48px; */
+  margin-right: 16px;
+}
+
+.productPrice,
+.productSubtotal {
+  text-align: center;
+  flex: 1;
+}
+
+.quantityInput {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  padding: 5px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.quantityInput_child {
+  width: 22%;
+  padding: 6px;
+  border: 1px solid  #00000066;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantityInput_arrow {
+  display: flex;
+  flex-direction: column;
+}
+
+.quantityDisplay{
+
+}
+ 

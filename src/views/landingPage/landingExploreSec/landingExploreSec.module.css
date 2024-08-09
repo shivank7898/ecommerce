@@ -1,0 +1,31 @@
+.LESec_main{
+    display: flex;
+    justify-content: center;
+    margin: 71px 0px 70px;
+}
+
+.LESec_child{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding: 0px 135px;
+}
+
+.LESec_sectionHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.LESec_productCards{
+    /* flex-wrap: wrap; */
+    display: flex;
+    gap: 60px;
+    flex-direction: column;
+}
+
+.LESec_productCards_child{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}

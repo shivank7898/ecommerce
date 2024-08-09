@@ -1,0 +1,68 @@
+.sectionH_main {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.sectionH_top {
+  justify-content: start;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.secH_top_bar {
+  margin-left: -8px;
+  background-color: #db4444;
+  transform: rotate(90deg);
+  /* width: 20px; */
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid #db4444;
+}
+
+.secH_top_text {
+  color: #db4444;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sectionH_btm {
+  display: flex;
+  gap: 87px;
+  align-items: end;
+}
+
+.secH_btm_text {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.secH_btm_timer {
+  display: flex;
+  flex-direction: column;
+}
+
+.secH_timer {
+  display: flex;
+  gap: 22px;
+  align-items: end;
+  font-size: 32px;
+  color: #e07575;
+  /* flex-direction: column; */
+}
+
+.secH_timer_text {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.secH_timer_time {
+  color: #000;
+  align-items: start;
+  flex-direction: column;
+  display: flex;
+  /* gap: 23px; */
+  font-size: 32px;
+  font-weight: 700;
+}

@@ -1,0 +1,50 @@
+.LcSec_main {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 70px;
+  padding: 80px 135px 0px;
+}
+
+.LcSec_child {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 60px;
+  /* align-items: center; */
+  /* margin-bottom: 40px; */
+  max-width: 1170px;
+}
+
+.LcSec_sectionHead {
+  max-width: 1170px;
+}
+
+.LcSec_carasoul {
+  /* max-width: 1170px; */
+}
+
+.LcSec_carasoul_card {
+  max-width: 170px;
+  border: 1px solid #c6c6c6;
+  border-radius: 4px;
+  padding: 25px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  gap: 16px;
+}
+
+.LcSec_carasoul_card:hover {
+  color: #fff;
+  background-color: #db4444;
+}
+
+.LfSec_divider {
+  /* min-width: 97.5rem; */
+  border: 0.0083rem solid #b3b3b360; /* 0.1px / 12 = 0.0083rem */
+  /* width: 100%; 90px / 12 = 7.5rem */
+}
