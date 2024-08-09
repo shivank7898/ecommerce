@@ -1,4 +1,6 @@
 import { IoIosHeartEmpty } from "react-icons/io";
+import { TbTruckDelivery } from "react-icons/tb";
+import { FiRefreshCcw } from "react-icons/fi";
 
 import styles from "./productDetailPage.module.css";
 
@@ -7,9 +9,12 @@ import img from "../../assets/card.png";
 import img2 from "../../assets/card2.png";
 import img3 from "../../assets/card3.png";
 import Button from "../../components/button/Button";
+import SectionHead from "../../components/sectionHead/SectionHead";
+import ProductCard from "../../components/productCard/ProductCard";
 
 const ProductDetailPage = () => {
   const images = [img, img2, img2, img3];
+  const arr = [1, 2, 3, 4];
   return (
     <div className={styles.productDetail_main}>
       <div className={styles.productDetail_child}>
@@ -67,9 +72,11 @@ const ProductDetailPage = () => {
           <div className={styles.productDetail_details_features}>
             <div className={styles.productDetail_details_features_top}>
               <div className={styles.productDetail_details_features_top_icon}>
-                <img src="/assets/icons/delivery.svg" alt="Free Delivery" />
+                <TbTruckDelivery />
               </div>
-              <div className={styles.productDetail_details_features_top_contet}>
+              <div
+                className={styles.productDetail_details_features_top_content}
+              >
                 <div className={styles.productDetail_details_features_top_text}>
                   Free Delivery
                 </div>
@@ -80,9 +87,11 @@ const ProductDetailPage = () => {
             </div>
             <div className={styles.productDetail_details_features_btm}>
               <div className={styles.productDetail_details_features_btm_icon}>
-                <img src="/assets/icons/return.svg" alt="Free Delivery" />
+                <FiRefreshCcw />
               </div>
-              <div className={styles.productDetail_details_features_top_contet}>
+              <div
+                className={styles.productDetail_details_features_top_content}
+              >
                 <div className={styles.productDetail_details_features_btm_text}>
                   Return Delivery
                 </div>
@@ -92,6 +101,16 @@ const ProductDetailPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className={styles.productDetail_suggestion}>
+        <div className={styles.productDetail_suggestion_head}>
+          <SectionHead small={"Related Item"}   />
+        </div>
+        <div className={styles.productDetail_suggestion_cards}>
+          {arr.map((item) => (
+            <ProductCard />
+          ))}
         </div>
       </div>
     </div>
