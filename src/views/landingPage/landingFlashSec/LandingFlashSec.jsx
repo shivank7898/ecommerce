@@ -5,8 +5,13 @@ import Carasoul from "../../../components/carasoul/Carasoul";
 import { SwiperSlide } from "swiper/react";
 import styles from "./landingFlashSec.module.css";
 import Button from "../../../components/button/Button";
+import { useSelector } from "react-redux";
 const LandingFlashSec = () => {
   const ar = [1, 2, 3, 4, 5, 5, 5, 5, 5];
+  const { data, loading, err } = useSelector((state) => state.product.products);
+
+  // console.log(data, "cfjfjfj", err);
+
   return (
     <div className={styles.LfSec_main}>
       <div className={styles.LfSec_child}>
@@ -28,10 +33,16 @@ const LandingFlashSec = () => {
             top="-85px"
             right="138px"
           >
-            {ar.map((item) => (
+            {data?.map((item) => (
               <SwiperSlide>
                 <div>
-                  <ProductCard />
+                  <ProductCard
+                    id={item.id}
+                    title={item.title}
+                    price={item.price}
+                    rating={item.rating}
+                    img={item.image}
+                  />
                 </div>
               </SwiperSlide>
             ))}

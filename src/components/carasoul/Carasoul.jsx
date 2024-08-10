@@ -18,7 +18,7 @@ const Carasoul = ({
   right,
   bottom
 }) => {
-  console.log(prev, next);
+  // console.log(prev, next);
   return (
     <div
       className="swiper-container"
@@ -63,8 +63,8 @@ const Carasoul = ({
           <div
             className={prev}
             style={{
-              width: "16px",
-              height: "14px",
+              // width: "16px",
+              // height: "14px",
               backgroundColor: "#F5F5F5",
               width: "46px",
               height: "46px",
@@ -84,8 +84,8 @@ const Carasoul = ({
           <div
             className={next}
             style={{
-              width: "16px",
-              height: "14px",
+              // width: "16px",
+              // height: "14px",
               backgroundColor: "#F5F5F5",
               width: "46px",
               height: "46px",

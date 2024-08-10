@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import Button from "../../../components/button/Button";
 import ProductCard from "../../../components/productCard/ProductCard";
 import SectionHead from "../../../components/sectionHead/SectionHead";
 import styles from "./landingSellingSec.module.css";
 const LandingSellingSec = () => {
-  const arr = [1, 2, 3, 4];
+  const { data } = useSelector((state) => state.product.products);
+  // console.log(data)
   return (
     <div className={styles.LSSec_main}>
       <div className={styles.LSSec_child}>
@@ -16,8 +18,14 @@ const LandingSellingSec = () => {
           <Button text="View all" />
         </div>
         <div className={styles.LSSec_productCards}>
-          {arr.map(() => (
-            <ProductCard />
+          {data?.slice(11, 15).map((item) => (
+            <ProductCard
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              rating={item.rating}
+              img={item.image}
+            />
           ))}
         </div>
       </div>

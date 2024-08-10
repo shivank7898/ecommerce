@@ -20,6 +20,8 @@
 
 .PrCard_img img {
   width: 172px;
+  max-height: 180px;
+  min-height: 180px;
   /* height: 152px; */
   object-fit: contain; /* Ensures image fills container */
 }
@@ -108,8 +110,22 @@
   display: flex;
 }
 
+.star {
+  font-size: 20px;
+  margin-right: 2px;
+  color: #ffa41c;
+}
+
+.filledStar {
+  color: gold; /* Color for filled stars */
+}
+
+.emptyStar {
+  color: lightgray; /* Color for empty stars */
+}
+
 .PrCard_ratingStar p {
-  font-size: 24px;  
+  font-size: 24px;
   color: orange;
 }
 

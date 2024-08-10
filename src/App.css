@@ -17,15 +17,14 @@ body {
   font-size: 1rem;
 }
 
-a{
+a {
   color: #000;
   text-decoration: none;
 }
 
-.swiper{
+.swiper {
   position: unset !important;
 }
-
 
 .swiper-pagination-bullet-active {
   background: #db4444 !important;
@@ -39,41 +38,3 @@ a{
   width: 14px !important;
   height: 14px !important;
 }
-
-/*  
-.custom-navigation {
-  display: flex;
-  position: absolute;
-  top: -85px;
-  right: 125px;
-  gap: 8px;
-   
-}
-
-.swiper-container{
-  width: 100%;
-  position: relative;
-}
-
-.swiper-next{
-  background-color: #F5F5F5;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: flex;
-   
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-prev{
-  background-color: #F5F5F5;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: flex;
-  
-  justify-content: center;
-  align-items: center;
-} */
-

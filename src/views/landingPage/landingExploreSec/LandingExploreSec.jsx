@@ -3,8 +3,9 @@ import Button from "../../../components/button/Button";
 import ProductCard from "../../../components/productCard/ProductCard";
 import SectionHead from "../../../components/sectionHead/SectionHead";
 import styles from "./landingExploreSec.module.css";
+import { useSelector } from "react-redux";
 const LandingExploreSec = () => {
-  const arr = [1, 2, 3, 4];
+  const { data } = useSelector((state) => state.product.products);
   return (
     <div className={styles.LESec_main}>
       <div className={styles.LESec_child}>
@@ -25,21 +26,33 @@ const LandingExploreSec = () => {
         </div>
         <div className={styles.LESec_productCards}>
           <div className={styles.LESec_productCards_child}>
-            {arr.map(() => (
+            {data?.slice(0, 4).map((item) => (
               <>
-                <ProductCard />
+                <ProductCard
+                  title={item.title}
+                  price={item.price}
+                  rating={item.rating}
+                  img={item.image}
+                  id={item.id}
+                />
               </>
             ))}
           </div>
           <div className={styles.LESec_productCards_child}>
-            {arr.map(() => (
+            {data?.slice(10, 14).map((item) => (
               <>
-                <ProductCard />
+                <ProductCard
+                  id={item.id}
+                  title={item.title}
+                  price={item.price}
+                  rating={item.rating}
+                  img={item.image}
+                />
               </>
             ))}
           </div>
         </div>
-        <div style={{display:"flex",justifyContent:"center"}}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <Button text="View All Products" />
         </div>
       </div>

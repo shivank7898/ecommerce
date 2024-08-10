@@ -1,10 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/Button";
 import ProductCard from "../../components/productCard/ProductCard";
 import SectionHead from "../../components/sectionHead/SectionHead";
 import styles from "./wishlist.module.css";
+import { useEffect } from "react";
+import { fetchProducts } from "../../redux/slices/productSlice";
 
 const WishList = () => {
-  const arr = [1, 2, 3, 4];
+  const { data } = useSelector((state) => state.product.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
   return (
     <div className={styles.wishList_main}>
       <div className={styles.wishList_child}>
@@ -19,8 +27,14 @@ const WishList = () => {
             />
           </div>
           <div className={styles.wishList_list_cards}>
-            {arr.map((item) => (
-              <ProductCard isWish={true} />
+            {data?.slice(11, 15).map((item) => (
+              <ProductCard
+                isWish={true}
+                title={item.title}
+                price={item.price}
+                rating={item.rating}
+                img={item.image}
+              />
             ))}
           </div>
         </div>
@@ -35,8 +49,13 @@ const WishList = () => {
             />
           </div>
           <div className={styles.wishList_list_cards}>
-            {arr.map((item) => (
-              <ProductCard />
+            {data?.slice(11, 15).map((item) => (
+              <ProductCard
+                title={item.title}
+                price={item.price}
+                rating={item.rating}
+                img={item.image}
+              />
             ))}
           </div>
         </div>

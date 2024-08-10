@@ -1,0 +1,10 @@
+.loader_main {
+  width: 100vh;
+  margin: auto;
+}
+
+.loader {
+    margin: auto;
+  width: 50vh;
+  height: 100vh;
+}

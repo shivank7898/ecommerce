@@ -3,10 +3,16 @@ import SectionHead from "../../../components/sectionHead/SectionHead";
 import Carasoul from "../../../components/carasoul/Carasoul";
 import { SwiperSlide } from "swiper/react";
 import { CiCamera } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
 const LandingCategorySec = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const { data } = useSelector((state) => state.category);
 
+  // if (!data || !Array.isArray(data)) {
+  //   return null;
+  // }
+  const duplicatedData = data && [...data, ...data, ...data];
   return (
     <div className={styles.LcSec_main}>
       <div className={styles.LcSec_child}>
@@ -27,12 +33,22 @@ const LandingCategorySec = () => {
             top="-105px"
             right="0px"
           >
-            {arr.map((item) => (
+            {duplicatedData?.map((item) => (
               <SwiperSlide>
                 <div className={styles.LcSec_carasoul_card}>
                   <CiCamera style={{ width: "56px", height: "56px" }} />
 
-                  <div>Camera</div>
+                  <div
+                    style={{
+                      whiteSpace: "nowrap", // Prevents text from wrapping
+                      overflow: "hidden", // Hides overflowing text
+                      textOverflow: "ellipsis", // Adds ellipsis (…) for overflowing text
+                      display: "block", // Ensures the div is a block-level element
+                      width: "100%",
+                    }}
+                  >
+                    {item}
+                  </div>
                 </div>
               </SwiperSlide>
             ))}

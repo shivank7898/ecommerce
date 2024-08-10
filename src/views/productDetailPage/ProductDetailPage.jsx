@@ -5,35 +5,54 @@ import { FiRefreshCcw } from "react-icons/fi";
 import styles from "./productDetailPage.module.css";
 
 import ProductGallery from "../../components/productGallery/ProductGallery";
-import img from "../../assets/card.png";
+// import img from "../../assets/card.png";
 import img2 from "../../assets/card2.png";
 import img3 from "../../assets/card3.png";
 import Button from "../../components/button/Button";
 import SectionHead from "../../components/sectionHead/SectionHead";
 import ProductCard from "../../components/productCard/ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  fetchProductDetails,
+  fetchProducts,
+} from "../../redux/slices/productSlice";
+import { useParams } from "react-router-dom";
 
 const ProductDetailPage = () => {
-  const images = [img, img2, img2, img3];
-  const arr = [1, 2, 3, 4];
+  const { data } = useSelector((state) => state.product.products);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const { data: product } = useSelector(
+    (state) => state.product.productDetails
+  );
+  const images = [product?.image, img2, img2, img3];
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    dispatch(fetchProductDetails(id));
+  }, [dispatch, id]);
+
   return (
     <div className={styles.productDetail_main}>
       <div className={styles.productDetail_child}>
         <div className={styles.productDetail_gallery}>
-          <ProductGallery images={images} thumb={img3} />
+          <ProductGallery images={images} thumb={product?.image} />
         </div>
         <div className={styles.productDetail_details}>
           <div className={styles.productDetail_details_top}>
             <div className={styles.productDetail_details_head}>
-              Havic HV G-92 Gamepad
+              {product?.title}
             </div>
             <div className={styles.productDetail_details_rating}>
               ★★★★★ <span>(150 Reviews) |</span>
             </div>
-            <div className={styles.productDetail_details_price}>$192.00</div>
+            <div className={styles.productDetail_details_price}>
+              {" "}
+              ${product?.price}
+            </div>
             <div className={styles.productDetail_details_desc}>
-              PlayStation 5 Controller Skin High quality vinyl with air channel
-              adhesive for easy bubble free install & mess free removal Pressure
-              sensitive.
+              {product?.description}
             </div>
           </div>
           <div className={styles.productDetail_details_divider}></div>
@@ -57,7 +76,7 @@ const ProductDetailPage = () => {
                   -
                 </div>
                 <div className={styles.productDetail_details_button_number}>
-                  2
+                  1
                 </div>
                 <div className={styles.productDetail_details_button_plus}>
                   +
@@ -67,6 +86,7 @@ const ProductDetailPage = () => {
               <div className={styles.productDetail_details_button_heart}>
                 <IoIosHeartEmpty />
               </div>
+              <Button text={"Add To Cart"} padding="10px 48px" />
             </div>
           </div>
           <div className={styles.productDetail_details_features}>
@@ -105,11 +125,17 @@ const ProductDetailPage = () => {
       </div>
       <div className={styles.productDetail_suggestion}>
         <div className={styles.productDetail_suggestion_head}>
-          <SectionHead small={"Related Item"}   />
+          <SectionHead small={"Related Item"} />
         </div>
         <div className={styles.productDetail_suggestion_cards}>
-          {arr.map((item) => (
-            <ProductCard />
+          {data?.slice(0, 4).map((item) => (
+            <ProductCard
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              rating={item.rating}
+              img={item.image}
+            />
           ))}
         </div>
       </div>

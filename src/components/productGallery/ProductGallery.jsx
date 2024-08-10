@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./productGallery.module.css";
 
-import img from "../../assets/card.png";
-import img2 from "../../assets/card2.png";
+const ProductGallery = ({ images, thumb }) => {
+  const [selectedImage, setSelectedImage] = useState(thumb || images[0]);
 
-const ProductGallery = ({images, thumb}) => {
-  const [selectedImage, setSelectedImage] = useState(thumb);
+  useEffect(() => {
+    if (thumb) {
+      setSelectedImage(thumb);
+    }
+  }, [thumb]);
 
-//   const images = [img, img2, img2, img2];
+  // console.log(thumb)
+
+  //   const images = [img, img2, img2, img2];
 
   return (
     <div className={styles.productGallery_main}>

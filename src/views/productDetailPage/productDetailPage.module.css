@@ -60,9 +60,8 @@
 
 .productDetail_details_desc {
   font-size: 14px;
-  /* color: #666; */
-  /* line-height: 1.5; */
-  /* margin-bottom: 24px; */
+  text-align: start;
+  text-transform: capitalize;
 }
 
 .productDetail_details_divider {
