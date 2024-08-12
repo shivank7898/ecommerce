@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
   );
 
   useEffect(() => {
-    console.log({ loading, catLoading, detailsLoading });
+    // console.log({ loading, catLoading, detailsLoading });
     if (!loading && !catLoading && !detailsLoading) {
       setLoad(false);
     }

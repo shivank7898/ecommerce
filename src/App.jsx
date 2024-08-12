@@ -9,6 +9,7 @@ import WishList from "./views/wishList/WishList";
 import Cart from "./views/cart/Cart";
 import AccountPage from "./views/accountPage/AccountPage";
 import ProductDetailPage from "./views/productDetailPage/ProductDetailPage";
+import ProductsPage from "./views/productsPage/ProductsPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
+            <Route path="/product" element={<ProductsPage />} />
           </Routes>
         </Layout>
       </Router>

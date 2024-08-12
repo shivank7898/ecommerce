@@ -13,16 +13,16 @@
   display: flex;
   justify-content: end;
   /* align-items: center; */
-  padding: 1rem  0; /* 12px 136px 12px 0 */
+  padding: 1rem 0; /* 12px 136px 12px 0 */
 }
 
 .navStripText {
-      /* margin-left: 14.4167rem; */
-    /* width: 68%; */
-    padding-right: 136px;
-    display: flex;
-    gap: 19.25rem;
-    /* /* justify-content: space-around; */
+  /* margin-left: 14.4167rem; */
+  /* width: 68%; */
+  padding-right: 136px;
+  display: flex;
+  gap: 19.25rem;
+  /* /* justify-content: space-around; */
 }
 
 .stripText {
@@ -109,4 +109,23 @@
   line-height: 24px;
   text-decoration: underline;
   text-underline-offset: 7px;
+}
+
+.navIcons_cart {
+  position: relative;
+}
+
+.navIcons_cart_count {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #db4444;
+  color: #fff;
+  padding: 5px;
+  border-radius: 100%;
 }

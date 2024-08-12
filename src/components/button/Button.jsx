@@ -1,6 +1,7 @@
 import React from "react";
 
 const Button = ({
+  onClick,
   type,
   text,
   padding = "16px 48px",
@@ -14,6 +15,7 @@ const Button = ({
 }) => {
   return (
     <button
+    onClick={onClick}
       type={type}
       style={{
         border: border,

@@ -1,15 +1,25 @@
-import React from "react";
-import styles from "./navbar.module.css";
-import Dropdown from "../dropdown/Dropdown";
+import React, { useEffect, useState } from "react";
 import { IoIosHeartEmpty } from "react-icons/io";
-import { BsCart3 } from "react-icons/bs";
-import search from "../../assets/search.svg";
-import { Link, useLocation } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
+import { BsCart3 } from "react-icons/bs";
+import { Link, useLocation } from "react-router-dom";
+
+import styles from "./navbar.module.css";
+
+import Dropdown from "../dropdown/Dropdown";
+import search from "../../assets/search.svg";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const loaction = useLocation();
+  const [cartLength, setCartLength] = useState(0);
+  const cart = useSelector((state) => state.cart);
 
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartLength(storedCart.length);
+    // console.log(storedCart.length);
+  }, [cart]);
   return (
     <main className={styles.main}>
       <div className={styles.navStrip}>
@@ -74,7 +84,10 @@ const Navbar = () => {
                 <IoIosHeartEmpty style={{ width: "24px", height: "24px" }} />
               </Link>
               <Link to={"/cart"}>
-                <BsCart3 style={{ width: "24px", height: "24px" }} />
+                <div className={styles.navIcons_cart}>
+                  <BsCart3 style={{ width: "24px", height: "24px" }} />
+                  <div className={styles.navIcons_cart_count}>{cartLength}</div>
+                </div>
               </Link>
               <Link to={"/account"}>
                 <VscAccount style={{ width: "24px", height: "24px" }} />

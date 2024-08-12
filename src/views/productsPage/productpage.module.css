@@ -1,0 +1,12 @@
+.productPage_main {
+  display: flex;
+  justify-content: center;
+  padding: 140px 135px;
+}
+
+.productPage_child {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}

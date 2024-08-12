@@ -28,26 +28,14 @@ const LandingExploreSec = () => {
           <div className={styles.LESec_productCards_child}>
             {data?.slice(0, 4).map((item) => (
               <>
-                <ProductCard
-                  title={item.title}
-                  price={item.price}
-                  rating={item.rating}
-                  img={item.image}
-                  id={item.id}
-                />
+                <ProductCard item={item} />
               </>
             ))}
           </div>
           <div className={styles.LESec_productCards_child}>
             {data?.slice(10, 14).map((item) => (
               <>
-                <ProductCard
-                  id={item.id}
-                  title={item.title}
-                  price={item.price}
-                  rating={item.rating}
-                  img={item.image}
-                />
+                <ProductCard item={item} />
               </>
             ))}
           </div>

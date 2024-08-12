@@ -19,13 +19,7 @@ const LandingSellingSec = () => {
         </div>
         <div className={styles.LSSec_productCards}>
           {data?.slice(11, 15).map((item) => (
-            <ProductCard
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              rating={item.rating}
-              img={item.image}
-            />
+            <ProductCard item={item} />
           ))}
         </div>
       </div>

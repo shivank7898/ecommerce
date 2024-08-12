@@ -35,15 +35,7 @@ const LandingFlashSec = () => {
           >
             {data?.map((item) => (
               <SwiperSlide>
-                <div>
-                  <ProductCard
-                    id={item.id}
-                    title={item.title}
-                    price={item.price}
-                    rating={item.rating}
-                    img={item.image}
-                  />
-                </div>
+                <ProductCard item={item} />
               </SwiperSlide>
             ))}
           </Carasoul>

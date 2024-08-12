@@ -1,46 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./cart.module.css";
 
 import Button from "../../components/button/Button";
 import ProductRow from "../../components/productRow/ProductRow";
 import img from "../../assets/card.png";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  // Dummy products data
-  const products = [
-    {
-      id: 1,
-      name: "LCD Monitor",
-      price: 650,
-      imageUrl: img,
-    },
-    {
-      id: 2,
-      name: "HI Gamepad",
-      price: 550,
-      imageUrl: img,
-    },
-  ];
-
-  const [quantities, setQuantities] = useState(() =>
-    products.reduce((acc, product) => {
-      acc[product.id] = 1; // Set initial quantity to 1
-      return acc;
-    }, {})
-  );
-
-  const handleQuantityChange = (productId, quantity) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: quantity,
-    }));
-  };
+  const cart = useSelector((state) => state.cart);
+  const [cartItem, setCartItem] = useState(cart);
 
   const getTotal = () => {
-    return products.reduce((total, product) => {
-      return total + product.price * (quantities[product.id] || 1);
+    return cartItem.reduce((total, item) => {
+      return total + item.product.price * item.quantity;
     }, 0);
   };
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      setCartItem(cart);
+    } else {
+      const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      setCartItem(storedCart);
+    }
+  }, [cart]);
 
   return (
     <div className={styles.cart_main}>
@@ -52,13 +35,8 @@ const Cart = () => {
             <div className={styles.header_quantity}>Quantity</div>
             <div className={styles.header_subtotal}>Subtotal</div>
           </div>
-          {products.map((product) => (
-            <ProductRow
-              key={product.id}
-              product={product}
-              quantity={quantities[product.id]}
-              onQuantityChange={handleQuantityChange}
-            />
+          {cartItem.map((item) => (
+            <ProductRow key={item.product.id} item={item} />
           ))}
           <div className={styles.cart_buttons}>
             <Button

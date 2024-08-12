@@ -12,14 +12,17 @@ import Button from "../../components/button/Button";
 import SectionHead from "../../components/sectionHead/SectionHead";
 import ProductCard from "../../components/productCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   fetchProductDetails,
   fetchProducts,
 } from "../../redux/slices/productSlice";
 import { useParams } from "react-router-dom";
+import useAddToCart from "../../hooks/useAddToCart";
 
 const ProductDetailPage = () => {
+  const [quantity, setQuantity] = useState(1);
+  const { handleAddToCart } = useAddToCart();
   const { data } = useSelector((state) => state.product.products);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -27,6 +30,15 @@ const ProductDetailPage = () => {
     (state) => state.product.productDetails
   );
   const images = [product?.image, img2, img2, img3];
+
+  const handleQuantity = (action) => {
+    if (action === "increment") {
+      setQuantity(quantity + 1);
+    }
+    if (action === "decrement") {
+      setQuantity(Math.max(quantity - 1, 0));
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -72,13 +84,23 @@ const ProductDetailPage = () => {
             </div>
             <div className={styles.productDetail_details_button}>
               <div className={styles.productDetail_details_button_child1}>
-                <div className={styles.productDetail_details_button_minus}>
+                <div
+                  className={styles.productDetail_details_button_minus}
+                  onClick={() => {
+                    handleQuantity("decrement");
+                  }}
+                >
                   -
                 </div>
                 <div className={styles.productDetail_details_button_number}>
-                  1
+                  {quantity}
                 </div>
-                <div className={styles.productDetail_details_button_plus}>
+                <div
+                  className={styles.productDetail_details_button_plus}
+                  onClick={() => {
+                    handleQuantity("increment");
+                  }}
+                >
                   +
                 </div>
               </div>
@@ -86,7 +108,13 @@ const ProductDetailPage = () => {
               <div className={styles.productDetail_details_button_heart}>
                 <IoIosHeartEmpty />
               </div>
-              <Button text={"Add To Cart"} padding="10px 48px" />
+              <Button
+                text={"Add To Cart"}
+                padding="10px 48px"
+                onClick={() =>
+                  handleAddToCart({ product: product, quantity: quantity })
+                }
+              />
             </div>
           </div>
           <div className={styles.productDetail_details_features}>
@@ -129,13 +157,7 @@ const ProductDetailPage = () => {
         </div>
         <div className={styles.productDetail_suggestion_cards}>
           {data?.slice(0, 4).map((item) => (
-            <ProductCard
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              rating={item.rating}
-              img={item.image}
-            />
+            <ProductCard item={item} />
           ))}
         </div>
       </div>
