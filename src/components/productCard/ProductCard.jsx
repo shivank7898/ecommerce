@@ -8,7 +8,7 @@ import styles from "./productCard.module.css";
 
 import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 // import {create}
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { createStarRating } from "../../utils/starRating";
 
 const trimTitle = (title) => {
@@ -32,7 +32,7 @@ const ProductCard = ({ isWish = false, item }) => {
     const existingProduct = wish.find(
       (wishItem) => wishItem.product.id === item.id
     );
-    console.log(existingProduct, "wishitem");
+    // console.log(existingProduct, "wishitem");
     setFill(!!existingProduct);
   }, [wish, item]);
 

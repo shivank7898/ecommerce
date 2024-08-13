@@ -9,17 +9,22 @@ import styles from "./navbar.module.css";
 import Dropdown from "../dropdown/Dropdown";
 import search from "../../assets/search.svg";
 import { useSelector } from "react-redux";
+import { auth } from "../../firebase";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const loaction = useLocation();
   const [cartLength, setCartLength] = useState(0);
   const cart = useSelector((state) => state.cart);
+  const { handleSignOut } = useAuth();
+  // console.log(user)
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartLength(storedCart.length);
     // console.log(storedCart.length);
   }, [cart]);
+
   return (
     <main className={styles.main}>
       <div className={styles.navStrip}>
@@ -63,15 +68,26 @@ const Navbar = () => {
                   About
                 </p>
               </Link>
-              <Link to={"/signUp"}>
+              {!auth.currentUser ? (
+                <Link to={"/signUp"}>
+                  <p
+                    className={
+                      loaction.pathname === "/signUp" ? styles.navActive : ""
+                    }
+                  >
+                    Sign Up
+                  </p>
+                </Link>
+              ) : (
                 <p
                   className={
                     loaction.pathname === "/signUp" ? styles.navActive : ""
                   }
+                  onClick={handleSignOut}
                 >
-                  Sign Up
+                  {auth.currentUser.displayName}
                 </p>
-              </Link>
+              )}
             </div>
           </div>
           <div className={styles.navRight}>

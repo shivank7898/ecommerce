@@ -16,9 +16,9 @@ const useAddToCartAndWish = () => {
     dispatch(addToWish({ product }));
   };
 
-  const handleRemoveWishlist = ({id}) => {
-    console.log(id, "wish")
-    dispatch(dispatch(removeWish({id})));
+  const handleRemoveWishlist = ({ id }) => {
+    console.log(id, "wish");
+    dispatch(dispatch(removeWish({ id })));
   };
 
   return { handleAddToCart, handleAddToWishlist, handleRemoveWishlist };

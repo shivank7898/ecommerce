@@ -21,14 +21,15 @@ const initialState = {
 };
 
 export const fetchProducts = createAsyncThunk(
-  "/products",
-  async (_,{ rejectWithValue }) => {
+  "product/fetchProducts",
+  async () => {
+    // console.log("first");
     try {
-      const response = await axios.get(`${url}/products`);
+      const response = await axios.get(`https://fakestoreapi.com/products`);
       // console.log(response.data)
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.response.data || "An error occurred");
+      console.error(err);
     }
   }
 );
@@ -51,7 +52,7 @@ export const fetchProductDetails = createAsyncThunk(
     // console.log(id)
     try {
       const response = await axios.get(`${url}/products/${id}`);
-    //   console.log(response.data)
+      //   console.log(response.data)
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data || "An error occurred");
@@ -61,7 +62,7 @@ export const fetchProductDetails = createAsyncThunk(
 
 const productsSlice = createSlice({
   name: "product",
-  initialState,
+  initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

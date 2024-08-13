@@ -26,6 +26,10 @@ a {
   position: unset !important;
 }
 
+p {
+  margin-bottom: 0;
+}
+
 .swiper-pagination-bullet-active {
   background: #db4444 !important;
   border: 2px solid white;

@@ -6,15 +6,31 @@ import styles from "./authForm.module.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const AuhtForm = ({ signUp = "true" }) => {
+  const { handleSignUp, handleSignOut, handleLogin } = useAuth();
+  const navigate = useNavigate();
   const [val, setVal] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  const navigate = useNavigate();
+  const handleChange = (e, setFieldValue) => {
+    setFieldValue(e.target.name, e.target.value);
+    setVal({
+      ...val,
+      [e.target.name]: e.target.value,
+    });
+
+    // console.log(val, "values");
+  };
+
+  // useEffect(() => {
+  //   auth.currentUser && navigate("/login");
+  // }, [auth.currentUser]);
+
   return (
     <div className={styles.authfrmSec_main}>
       {/* <div className={styles.authfrmSec_child}> */}
@@ -59,19 +75,21 @@ const AuhtForm = ({ signUp = "true" }) => {
             {!signUp ? (
               ""
             ) : (
-              <Field
-                type="text"
-                // onChange={(e) => handleChange2(e, setFieldValue)}
-                //   value={values.name}
-                name="name"
-                placeholder="Name"
-                className={styles.authfrmSec_form_field}
-              />
+              <>
+                <Field
+                  type="text"
+                  onChange={(e) => handleChange(e, setFieldValue)}
+                  // value={values.name}
+                  name="name"
+                  placeholder="Name"
+                  className={styles.authfrmSec_form_field}
+                />
+                <ErrorMessage name="name" />
+              </>
             )}
-            <ErrorMessage name="name" />
             <Field
               type="email"
-              // onChange={(e) => handleChange2(e, setFieldValue)}
+              onChange={(e) => handleChange(e, setFieldValue)}
               name="email"
               placeholder="Email or Phone Number"
               className={styles.authfrmSec_form_field}
@@ -79,7 +97,7 @@ const AuhtForm = ({ signUp = "true" }) => {
             <ErrorMessage name="email" />
             <Field
               type="password"
-              // onChange={(e) => handleChange2(e, setFieldValue)}
+              onChange={(e) => handleChange(e, setFieldValue)}
               name="password"
               placeholder="Password"
               className={styles.authfrmSec_form_field}
@@ -87,14 +105,34 @@ const AuhtForm = ({ signUp = "true" }) => {
             <ErrorMessage name="password" />
             {!signUp ? (
               <div className={styles.authfrmSec_form_loginButton}>
-                <Button text={"Log In"} />
+                <Button
+                  text={"Log In"}
+                  onClick={() => {
+                    handleLogin({
+                      displayName: val.name,
+                      email: val.email,
+                      password: val.password,
+                    });
+                  }}
+                />
                 <div className={styles.authfrmSec_form_forgot}>
                   Forgot Password ?
                 </div>
               </div>
             ) : (
               <div className={styles.authfrmSec_form_button}>
-                <Button text={"Create Account"} maxWidth="100%" />
+                <Button
+                  text={"Create Account"}
+                  maxWidth="100%"
+                  type="submit"
+                  onClick={() => {
+                    handleSignUp({
+                      displayName: val.name,
+                      email: val.email,
+                      password: val.password,
+                    });
+                  }}
+                />
                 <button>
                   {" "}
                   <FcGoogle style={{ width: "24px", height: "24px" }} />

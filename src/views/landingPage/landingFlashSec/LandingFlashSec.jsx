@@ -1,16 +1,16 @@
-import React from "react";
+import { SwiperSlide } from "swiper/react";
+import { useSelector } from "react-redux";
+
+import styles from "./landingFlashSec.module.css";
+
 import SectionHead from "../../../components/sectionHead/SectionHead";
 import ProductCard from "../../../components/productCard/ProductCard";
 import Carasoul from "../../../components/carasoul/Carasoul";
-import { SwiperSlide } from "swiper/react";
-import styles from "./landingFlashSec.module.css";
 import Button from "../../../components/button/Button";
-import { useSelector } from "react-redux";
+
 const LandingFlashSec = () => {
   const ar = [1, 2, 3, 4, 5, 5, 5, 5, 5];
-  const { data, loading, err } = useSelector((state) => state.product.products);
-
-  // console.log(data, "cfjfjfj", err);
+  const { data } = useSelector((state) => state.product.products);
 
   return (
     <div className={styles.LfSec_main}>

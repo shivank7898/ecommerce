@@ -1,5 +1,11 @@
-import "./App.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
+import "./App.css";
+
 import LandingPage from "./views/landingPage/LandingPage";
 import AboutPage from "./views/aboutPage/AboutPage";
 import Layout from "./layout/Layout";
@@ -10,8 +16,21 @@ import Cart from "./views/cart/Cart";
 import AccountPage from "./views/accountPage/AccountPage";
 import ProductDetailPage from "./views/productDetailPage/ProductDetailPage";
 import ProductsPage from "./views/productsPage/ProductsPage";
+import { setUser } from "./redux/slices/userSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        // User is signed out or session has expired
+        dispatch(setUser(null));
+        localStorage.removeItem("user");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
   return (
     <>
       <Router>
