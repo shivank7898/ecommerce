@@ -5,10 +5,13 @@ import SectionHead from "../../components/sectionHead/SectionHead";
 import styles from "./wishlist.module.css";
 import { useEffect } from "react";
 import { fetchProducts } from "../../redux/slices/productSlice";
+import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 
 const WishList = () => {
   const { data } = useSelector((state) => state.product.products);
+  const wish = useSelector((state) => state.wish);
   const dispatch = useDispatch();
+  const {handleRemoveWishlist} = useAddToCartAndWish()
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -27,14 +30,8 @@ const WishList = () => {
             />
           </div>
           <div className={styles.wishList_list_cards}>
-            {data?.slice(11, 15).map((item) => (
-              <ProductCard
-                isWish={true}
-                title={item.title}
-                price={item.price}
-                rating={item.rating}
-                img={item.image}
-              />
+            {wish.map((item) => (
+              <ProductCard isWish={true} item={item.product} />
             ))}
           </div>
         </div>
@@ -50,12 +47,7 @@ const WishList = () => {
           </div>
           <div className={styles.wishList_list_cards}>
             {data?.slice(11, 15).map((item) => (
-              <ProductCard
-                title={item.title}
-                price={item.price}
-                rating={item.rating}
-                img={item.image}
-              />
+              <ProductCard item={item} />
             ))}
           </div>
         </div>

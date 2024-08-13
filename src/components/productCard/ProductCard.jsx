@@ -1,12 +1,15 @@
 import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 import styles from "./productCard.module.css";
 
-import useAddToCart from "../../hooks/useAddToCart";
+import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
+// import {create}
+import { useDispatch, useSelector } from "react-redux";
+import { createStarRating } from "../../utils/starRating";
 
 const trimTitle = (title) => {
   const trimmedTitle = title?.slice(0, 20);
@@ -17,32 +20,21 @@ const trimTitle = (title) => {
 };
 
 const ProductCard = ({ isWish = false, item }) => {
-  const { handleAddToCart } = useAddToCart();
-  const [fill, setFill] = useState(true);
-  const maxRating = 5;
-
+  // console.log(item)
+  const { handleAddToCart, handleAddToWishlist, handleRemoveWishlist } =
+    useAddToCartAndWish();
+  const wish = useSelector((state) => state.wish);
+  // console.log(wish)
+  const [fill, setFill] = useState(false);
   const trimmedTitle = trimTitle(item?.title);
 
-  const createStarRating = () => {
-    const stars = [];
-
-    for (let i = 1; i <= maxRating; i++) {
-      // Check if the current index is within the rating
-      const isFilled = i <= item?.rating;
-      stars.push(
-        <p
-          key={i}
-          className={`${styles.star} ${
-            isFilled ? styles.filledStar : styles.emptyStar
-          }`}
-        >
-          {isFilled ? "★" : "☆"}
-        </p>
-      );
-    }
-
-    return stars;
-  };
+  useEffect(() => {
+    const existingProduct = wish.find(
+      (wishItem) => wishItem.product.id === item.id
+    );
+    console.log(existingProduct, "wishitem");
+    setFill(!!existingProduct);
+  }, [wish, item]);
 
   return (
     <div className={styles.PrCard_main}>
@@ -58,12 +50,12 @@ const ProductCard = ({ isWish = false, item }) => {
           {!isWish ? (
             <>
               <div className={styles.PrCard_icon}>
-                {fill ? (
+                {!fill ? (
                   <IoIosHeartEmpty
                     color="#000"
                     style={{ width: "24px", height: "24px" }}
                     onClick={() => {
-                      setFill(!fill);
+                      handleAddToWishlist({ product: item });
                     }}
                   />
                 ) : (
@@ -71,7 +63,7 @@ const ProductCard = ({ isWish = false, item }) => {
                     color="#db4444"
                     style={{ width: "24px", height: "24px" }}
                     onClick={() => {
-                      setFill(!fill);
+                      handleRemoveWishlist({ id: item.id });
                     }}
                   />
                 )}
@@ -86,6 +78,9 @@ const ProductCard = ({ isWish = false, item }) => {
           ) : (
             <div className={styles.PrCard_icon}>
               <RiDeleteBin6Line
+                onClick={() => {
+                  handleRemoveWishlist({ id: item.id });
+                }}
                 color="#000"
                 style={{ width: "24px", height: "24px" }}
               />
@@ -93,7 +88,7 @@ const ProductCard = ({ isWish = false, item }) => {
           )}
         </div>
       </div>
-      <Link to={`/product/${item.id}`}>
+      <Link to={`/product/${item?.id}`}>
         <div className={styles.PrCard_content}>
           <p className={styles.PrCard_title}>{trimmedTitle}</p>
           <div className={styles.PrCard_price}>
@@ -105,7 +100,7 @@ const ProductCard = ({ isWish = false, item }) => {
           {!isWish && (
             <div className={styles.PrCard_rating}>
               <div className={styles.PrCard_ratingStar}>
-                {createStarRating()}
+                {createStarRating(item?.rating)}
               </div>
               <p className={styles.PrCard_ratingCount}>{item?.rating?.count}</p>
             </div>

@@ -6,10 +6,10 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
-import useAddToCart from "../../hooks/useAddToCart";
+import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 
 const ProductRow = ({ item }) => {
-  const { handleAddToCart } = useAddToCart();
+  const { handleAddToCart } = useAddToCartAndWish();
   // console.log(item, "product");
 
   const handleQuantity = (action) => {
@@ -20,13 +20,7 @@ const ProductRow = ({ item }) => {
       handleAddToCart({ product: item.product, quantity: -1 });
     }
   };
-  const incrementQuantity = () => {
-    handleAddToCart({ product: item.product, quantity: 1 });
-  };
-
-  const decrementQuantity = () => {
-    handleAddToCart({ product: item.product, quantity: -1 });
-  };
+  
   return (
     <div className={styles.productRow}>
       <div className={styles.productInfo}>

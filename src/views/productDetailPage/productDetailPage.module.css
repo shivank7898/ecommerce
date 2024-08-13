@@ -41,6 +41,9 @@
 }
 
 .productDetail_details_rating {
+  display: flex;
+  /* align-items: center; */
+  /* gap: 8px; */
   font-size: 16px;
   color: #ffad33;
   /* margin-bottom: 8px; */
@@ -49,6 +52,11 @@
 .productDetail_details_rating span {
   font-size: 14px;
   color: #c1c1c1;
+  margin-left: 8px;
+}
+
+.details_rating_stock {
+  color: #00ff66 !important;
 }
 
 .productDetail_details_price {

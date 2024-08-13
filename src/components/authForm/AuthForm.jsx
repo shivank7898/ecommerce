@@ -3,8 +3,10 @@ import { FcGoogle } from "react-icons/fc";
 import Button from "../button/Button";
 
 import styles from "./authForm.module.css";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const AuhtForm = ({ signUp = "true" }) => {
   const [val, setVal] = useState({
     name: "",
@@ -12,7 +14,7 @@ const AuhtForm = ({ signUp = "true" }) => {
     password: "",
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className={styles.authfrmSec_main}>
       {/* <div className={styles.authfrmSec_child}> */}
@@ -99,7 +101,14 @@ const AuhtForm = ({ signUp = "true" }) => {
                   Sign up with Google
                 </button>
                 <p>
-                  Already have account? <span onClick={() => {navigate("/login")}}>Log in</span>
+                  Already have account?{" "}
+                  <span
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  >
+                    Log in
+                  </span>
                 </p>
               </div>
             )}

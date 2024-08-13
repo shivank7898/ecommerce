@@ -1,29 +1,32 @@
-import { IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FiRefreshCcw } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import styles from "./productDetailPage.module.css";
 
 import ProductGallery from "../../components/productGallery/ProductGallery";
-// import img from "../../assets/card.png";
 import img2 from "../../assets/card2.png";
 import img3 from "../../assets/card3.png";
 import Button from "../../components/button/Button";
 import SectionHead from "../../components/sectionHead/SectionHead";
 import ProductCard from "../../components/productCard/ProductCard";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import {
   fetchProductDetails,
   fetchProducts,
 } from "../../redux/slices/productSlice";
-import { useParams } from "react-router-dom";
-import useAddToCart from "../../hooks/useAddToCart";
+import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
+import { createStarRating } from "../../utils/starRating";
 
 const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
-  const { handleAddToCart } = useAddToCart();
+  const [fill, setFill] = useState(false);
+  const { handleAddToCart, handleAddToWishlist, handleRemoveWishlist } =
+    useAddToCartAndWish();
   const { data } = useSelector((state) => state.product.products);
+  const wish = useSelector((state) => state.wish);
   const dispatch = useDispatch();
   const { id } = useParams();
   const { data: product } = useSelector(
@@ -39,6 +42,14 @@ const ProductDetailPage = () => {
       setQuantity(Math.max(quantity - 1, 0));
     }
   };
+
+  useEffect(() => {
+    const existingProduct = wish.find(
+      (wishItem) => wishItem.product.id === product?.id
+    );
+    // console.log(existingProduct, "wishitem");
+    setFill(!!existingProduct);
+  }, [wish, product]);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -57,7 +68,12 @@ const ProductDetailPage = () => {
               {product?.title}
             </div>
             <div className={styles.productDetail_details_rating}>
-              ★★★★★ <span>(150 Reviews) |</span>
+              {createStarRating(product?.rating)}{" "}
+              <span>
+                {" "}
+                ( {product?.rating.count} ) |{" "}
+                <span className={styles.details_rating_stock}>In Stock</span>
+              </span>
             </div>
             <div className={styles.productDetail_details_price}>
               {" "}
@@ -106,7 +122,21 @@ const ProductDetailPage = () => {
               </div>
               <Button text={"Buy Now"} padding="10px 48px" />
               <div className={styles.productDetail_details_button_heart}>
-                <IoIosHeartEmpty />
+                {!fill ? (
+                  <IoIosHeartEmpty
+                    color="#000"
+                    onClick={() => {
+                      handleAddToWishlist({ product: product });
+                    }}
+                  />
+                ) : (
+                  <IoIosHeart
+                    color="#db4444"
+                    onClick={() => {
+                      handleRemoveWishlist({ id: product.id });
+                    }}
+                  />
+                )}
               </div>
               <Button
                 text={"Add To Cart"}
