@@ -31,7 +31,7 @@ const WishList = () => {
           </div>
           <div className={styles.wishList_list_cards}>
             {wish.map((item) => (
-              <ProductCard isWish={true} item={item.product} />
+              <ProductCard isWish={true} item={item?.product} />
             ))}
           </div>
         </div>
