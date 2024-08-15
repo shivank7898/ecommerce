@@ -31,6 +31,9 @@ function App() {
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {}, [auth.currentUser]);
+
   return (
     <>
       <Router>

@@ -2,39 +2,37 @@
   width: 51%;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 4rem; /* 48px / 12px */
 }
 
 .authfrmSec_text {
   display: flex;
   flex-direction: column;
-  /* gap: 24px; */
   align-items: start;
   justify-content: center;
   font-family: "Inter", sans-serif;
-  font-size: 36px;
+  font-size: 3rem; /* 36px / 12px */
   font-weight: 500;
 }
 
 .authfrmSec_text_para {
   font-family: "Poppins", sans-serif;
-  font-size: 16px;
+  font-size: 1.333rem; /* 16px / 12px */
   font-weight: 400;
 }
 
 .authfrmSec_form {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 3.333rem; /* 40px / 12px */
 }
 
 .authfrmSec_form_field {
   background-color: transparent;
-  padding: 4px 0;
-  font-size: 16px;
-  /* width: 370px; */
+  padding: 0.333rem 0; /* 4px / 12px */
+  font-size: 1.333rem; /* 16px / 12px */
   border: none;
-  border-bottom: 1px solid #8c8c8c;
+  border-bottom: 0.083rem solid #8c8c8c; /* 1px / 12px */
 }
 
 .authfrmSec_form_field::placeholder {
@@ -44,39 +42,64 @@
 .authfrmSec_form_button {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.333rem; /* 16px / 12px */
 }
 
 .authfrmSec_form_button button {
-  background-color: transparent;
-  border: 1px solid #0000003d;
-  border-radius: 4px;
+  border: 0.083rem solid #0000003d; /* 1px / 12px */
+  border-radius: 0.333rem; /* 4px / 12px */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  font-size: 16px;
-  padding: 16px 0px;
+  gap: 1.333rem; /* 16px / 12px */
+  font-size: 1.333rem; /* 16px / 12px */
+  padding: 1.333rem 0; /* 16px / 12px */
 }
 
 .authfrmSec_form_button p {
   text-align: center;
-  padding-top: 16px;
+  padding-top: 1.333rem; /* 16px / 12px */
 }
 
 .authfrmSec_form_button span {
-  padding-left: 16px;
+  padding-left: 1.333rem; /* 16px / 12px */
   font-weight: 500;
   text-decoration: underline;
-  text-underline-offset: 7px;
+  text-underline-offset: 0.583rem; /* 7px / 12px */
 }
 
-.authfrmSec_form_loginButton{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.authfrmSec_form_loginButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .authfrmSec_form_forgot {
-    color: #DB4444;
+  color: #db4444;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .authfrmSec_main {
+    width: 100%;
+  }
+
+  .authfrmSec_form_button p {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .authfrmSec_main {
+    width: 80%;
+  }
+
+  .authfrmSec_form_button p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+  .authfrmSec_main {
+    width: 70%;
+  }
 }

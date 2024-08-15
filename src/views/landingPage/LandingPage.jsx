@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Lottie from "lottie-react";
 
-import styles from "../../layout/layout.module.css";
+import styles from "./landingPage.module.css";
 
 import LandingBannerSec from "./landingBannerSec/LandingBannerSec";
 import LandingFlashSec from "./landingFlashSec/LandingFlashSec";

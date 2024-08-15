@@ -1,20 +1,19 @@
 .LSerSec_main {
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  margin-top: 70px;
-  margin-bottom: 140px;
+  justify-content: center;
+  margin: 5.833rem 0 11.667rem; /* 70px / 12px */
 }
 
 .LSerSec_child {
   display: flex;
   flex-wrap: wrap; /* Allow services to wrap on smaller screens */
-  gap: 88px;
+  gap: 7.333rem; /* 88px / 12px */
 }
 
 .LSerSec_service {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2rem; /* 24px / 12px */
   text-align: center;
 }
 
@@ -22,12 +21,47 @@
 }
 
 .LSerSec_service_content_head {
-  font-size: 20px;
-  font-weight: 600; /* Make the heading bold */
-  /* Add some space between heading and paragraph */
+  font-size: 1.667rem; /* 20px / 12px */
+  font-weight: 600;
 }
 
 .LSerSec_service_content_para {
-   font-size: 14px;
-  font-weight: 400; 
+  font-size: 1.167rem; /* 14px / 12px */
+  font-weight: 400;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .LSerSec_main {
+    margin: 6.833rem 1.25rem;
+  }
+
+  .LSerSec_child {
+    width: 100%;
+    gap: 2.333rem;
+  }
+
+  .LSerSec_service {
+    flex: 1;
+    gap: 1rem;
+  }
+
+  .LSerSec_service img {
+    width: 50%;
+  }
+
+  .LSerSec_service_content_head {
+    font-size: 1rem;
+  }
+
+  .LSerSec_service_content_para {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+  .LSerSec_main {
+    display: flex;
+    justify-content: center;
+    margin: 5.833rem 0 11.667rem; /* 70px / 12px */
+  }
 }

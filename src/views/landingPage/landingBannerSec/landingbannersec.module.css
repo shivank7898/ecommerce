@@ -1,38 +1,143 @@
 .LbSec {
-  display: flex; /* Main container layout */
+  display: flex;
+  justify-content: center;
+  padding: 0px 11.25rem;
+}
+
+.LbSec_child {
+  display: flex;
+  width: 100%;
+  max-width: 1170px;
 }
 
 .LbSec_menu {
   color: #000000;
-  font-size: 16px;
+  font-size: 1.333rem;
   border-right: 1px solid black;
   display: flex;
-  padding: 40px 12px 0px 135px;
+  padding: 3.333rem 1rem 0px 0rem;
   flex: 1 1 20%;
 }
 
-.LbSec_menuChild{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.LbSec_menuChild {
+  display: flex;
+  flex-direction: column;
+  gap: 1.333rem;
 }
 
-
 .LbSec_menuText {
-    /* width: 30%; */
   display: flex;
   align-items: center;
-  gap: 51px;
+  gap: 4.25rem;
   justify-content: space-between;
 }
 
 .LbSec_banner {
-  /* z-index: -1; */
-  padding: 40px 135px 0px 45px;
+  padding: 3.333rem 0rem 0px 3.75rem;
   flex: 1 1 70%;
   display: flex; /* Banner layout */
   width: 70%; /* Set a fixed width for the banner */
 }
 
+.LbSec_banner img {
+  width: 110%;
+  object-fit: contain;
+}
 
- 
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .LbSec {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+  }
+
+  .LbSec_child {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    max-width: 1170px;
+  }
+
+  .LbSec_menu {
+    display: none;
+  }
+
+  .LbSec_banner {
+    padding: 0px;
+    flex: 1 1 70%;
+    display: flex; /* Banner layout */
+    width: 100%; /* Set a fixed width for the banner */
+  }
+
+  .LbSec_banner img {
+    width: 100%;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .LbSec {
+    display: flex;
+    justify-content: center;
+    padding: 5.25rem;
+  }
+
+  .LbSec_child {
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    max-width: 1170px;
+  }
+
+  .LbSec_menu {
+    display: none;
+  }
+
+  .LbSec_banner {
+    padding: 0px;
+  }
+
+  .LbSec_banner img {
+    width: 100%;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+  .LbSec {
+    display: flex;
+    justify-content: center;
+    padding: 0px 4.5rem;
+  }
+
+  .LbSec_menuChild {
+    display: flex;
+    flex-direction: column;
+    gap: 1.333rem;
+  }
+
+  .LbSec_menuText {
+    display: flex;
+    align-items: center;
+    gap: 4.25rem;
+    justify-content: space-between;
+  }
+
+  .LbSec_banner {
+    padding: 3.333rem 0rem 0px 3.75rem;
+    flex: 1 1 70%;
+    display: flex;
+    width: 70%;
+  }
+
+  .LbSec_banner img {
+    width: 126%;
+    object-fit: contain;
+  }
+}
+
+/* Large screens ----------- */
+@media screen and (min-width: 1824px) {
+  /* Styles */
+}

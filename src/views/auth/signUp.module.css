@@ -1,26 +1,68 @@
-.SignUpSec_main{
-    width: 100%;
-    padding: 60px 0px 140px;
+.SignUpSec_main {
+  width: 100%;
+  padding: 5rem 0 11.667rem; /* 60px / 12px and 140px / 12px */
 }
 
-.SignUpSec_child{
+.SignUpSec_child {
+  display: flex;
+}
+
+.SignUpSec_img {
+  width: 50%;
+}
+
+.SignUpSec_img img {
+  width: 100%;
+}
+
+.SignUpSec_form {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .SignUpSec_main {
+    width: 100%;
+    padding: 20rem 2.683rem;
+  }
+
+  .SignUpSec_child {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+
+  .SignUpSec_img {
+    display: none;
     /* width: 100%; */
-    display: flex;
-}
+  }
 
-.SignUpSec_img{
-    width: 50%;
-}
-
-.SignUpSec_img img{
+  .SignUpSec_form {
     width: 100%;
+  }
 }
 
-.SignUpSec_form{
-    width: 50%;
-    display: flex;
-    justify-content: center;
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .SignUpSec_main {
+    padding: 5rem 2rem;
+  }
+
+  .SignUpSec_child {
     align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .SignUpSec_img {
+    /* display: ; */
+    width: 50%;
+    flex: 1;
+    /* display: block; */
+  }
+
+  .SignUpSec_form {
+    flex: 1;
+    /* width: 50%; */
+  }
 }
-
-

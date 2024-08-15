@@ -16,7 +16,8 @@ const Carasoul = ({
   next,
   top,
   right,
-  bottom
+  bottom,
+  breakpoint,
 }) => {
   // console.log(prev, next);
   return (
@@ -37,6 +38,8 @@ const Carasoul = ({
             prevEl: `.${prev}`,
           }
         }
+        // breakpoints={breakpoints}
+        breakpoints={breakpoint ? breakpoint : undefined}
         modules={[Pagination, Navigation]}
         className="mySwiper"
         style={{

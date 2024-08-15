@@ -1,9 +1,22 @@
-import AccountForm from "./AccountForm";
 import styles from "./accountPage.module.css";
+
+import Breadcrumb from "../../components/breadcrumb/Breadcumb";
+import AccountForm from "./AccountForm";
 import SideBarSec from "./SideBarSec";
+import { auth } from "../../firebase";
 const AccountPage = () => {
   return (
     <div className={styles.account_main}>
+      <div className={styles.breadcrumb_account}>
+        <Breadcrumb />
+        <div className={styles.account_name}>
+          {auth.currentUser && (
+            <>
+              Welcome! <span>{auth.currentUser?.displayName}</span>
+            </>
+          )}
+        </div>
+      </div>
       <div className={styles.account_child}>
         <div className={styles.account_sidebar}>
           <div className={styles.sidebarContainer}>
@@ -31,7 +44,7 @@ const AccountPage = () => {
           </div>
         </div>
         <div className={styles.account_form}>
-            <AccountForm />
+          <AccountForm />
         </div>
       </div>
     </div>

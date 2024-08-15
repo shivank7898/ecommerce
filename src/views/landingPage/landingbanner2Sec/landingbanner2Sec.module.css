@@ -1,0 +1,30 @@
+.lb2Sec_main {
+  display: flex;
+  justify-content: center;
+  padding: 11.24rem 11rem 0px;
+}
+
+.bannerImage {
+  width: 100%;
+  max-width: 1170px;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .lb2Sec_main {
+    padding: 5.283rem 1.25rem;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .lb2Sec_main {
+    padding: 5.25rem;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+  .lb2Sec_main {
+    display: flex;
+    justify-content: center;
+    padding: 5.833rem 4.5rem 0px;
+  }
+}

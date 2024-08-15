@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Sling as Hamburger } from "hamburger-react";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { VscAccount } from "react-icons/vsc";
 import { BsCart3 } from "react-icons/bs";
@@ -11,8 +12,10 @@ import search from "../../assets/search.svg";
 import { useSelector } from "react-redux";
 import { auth } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
+import { Drawer, List, ListItem, ListItemText } from "@mui/material";
 
 const Navbar = () => {
+  const [isOpen, setOpen] = useState(false);
   const loaction = useLocation();
   const [cartLength, setCartLength] = useState(0);
   const cart = useSelector((state) => state.cart);
@@ -109,6 +112,99 @@ const Navbar = () => {
                 <VscAccount style={{ width: "24px", height: "24px" }} />
               </Link>
             </div>
+          </div>
+          <div className={styles.hamburgerIcon}>
+            <Hamburger toggled={isOpen} toggle={setOpen} />
+            <Drawer
+              className={styles.navDrawer}
+              anchor="right"
+              open={isOpen}
+              onClose={() => setOpen(false)}
+            >
+              <List className={styles.drawerList}>
+                {auth.currentUser && (
+                  <ListItem button onClick={() => setOpen(false)}>
+                    <ListItemText
+                      disableTypography
+                      primary={`Hello ${auth.currentUser.displayName} !`}
+                      className={styles.drawer_listItem_greet}
+                    />
+                  </ListItem>
+                )}
+
+                <ListItem button onClick={() => setOpen(false)}>
+                  <Link to="/">
+                    <ListItemText
+                      disableTypography
+                      primary="Home"
+                      className={styles.drawer_listItem}
+                    />
+                  </Link>
+                </ListItem>
+                <ListItem button onClick={() => setOpen(false)}>
+                  <Link to="/about">
+                    <ListItemText
+                      disableTypography
+                      primary="About"
+                      className={styles.drawer_listItem}
+                    />
+                  </Link>
+                </ListItem>
+                <ListItem button onClick={() => setOpen(false)}>
+                  <Link to="/contact">
+                    <ListItemText
+                      primary="Contact"
+                      disableTypography
+                      className={styles.drawer_listItem}
+                    />
+                  </Link>
+                </ListItem>
+                <ListItem button onClick={() => setOpen(false)}>
+                  <Link to="/wishlist">
+                    <ListItemText
+                      primary="Wishlist"
+                      disableTypography
+                      className={styles.drawer_listItem}
+                    />
+                  </Link>
+                </ListItem>
+                <ListItem button onClick={() => setOpen(false)}>
+                  <Link to="/cart">
+                    <ListItemText
+                      primary="Cart"
+                      disableTypography
+                      className={styles.drawer_listItem}
+                    />
+                  </Link>
+                </ListItem>
+                {!auth.currentUser && (
+                  <ListItem button onClick={() => setOpen(false)}>
+                    <Link to="/signUp">
+                      <ListItemText
+                        disableTypography
+                        primary="Sign Up"
+                        className={styles.drawer_listItem}
+                      />
+                    </Link>
+                  </ListItem>
+                )}
+                {auth.currentUser && (
+                  <ListItem
+                    button
+                    onClick={() => {
+                      handleSignOut();
+                      setOpen(false);
+                    }}
+                  >
+                    <ListItemText
+                      disableTypography
+                      primary="Sign Out"
+                      className={styles.drawer_listItem}
+                    />
+                  </ListItem>
+                )}
+              </List>
+            </Drawer>
           </div>
         </div>
       </div>

@@ -1,31 +1,59 @@
-.LESec_main{
-    display: flex;
-    justify-content: center;
-    margin: 71px 0px 70px;
+.LESec_main {
+  display: flex;
+  justify-content: center;
+  margin: 5.917rem 11.25rem 5.833rem;
 }
 
-.LESec_child{
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-    padding: 0px 135px;
+.LESec_child {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  width: 100%;
+  max-width: 1170px;
+  /* padding: 0px 11.25rem; */
 }
 
-.LESec_sectionHead{
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
+.LESec_sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
 }
 
-.LESec_productCards{
-    /* flex-wrap: wrap; */
-    display: flex;
-    gap: 60px;
-    flex-direction: column;
+.LESec_productCards {
+  display: flex;
+  gap: 5rem;
+  flex-direction: column;
 }
 
-.LESec_productCards_child{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+.LESec_productCards_child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .LESec_main {
+    margin: 2.833rem 1.24rem;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .LESec_main {
+    margin: 5.25rem;
+    margin-top: 0;
+  }
+
+  .LESec_productCards > .LESec_productCards_child:nth-child(1) {
+    display: none;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+  .LESec_main {
+    margin: 5.833rem 4.5rem 5.833rem;
+  }
+
+  .LESec_productCards_child {
+    gap: 1rem;
+  }
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import styles from "./cart.module.css";
 
 import Button from "../../components/button/Button";
 import ProductRow from "../../components/productRow/ProductRow";
-import img from "../../assets/card.png";
-import { useSelector } from "react-redux";
+import Breadcrumb from "../../components/breadcrumb/Breadcumb";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -27,6 +28,7 @@ const Cart = () => {
 
   return (
     <div className={styles.cart_main}>
+      <Breadcrumb className={styles.breadcrumb_cart}/>
       <div className={styles.cart_child}>
         <div className={styles.cart_products}>
           <div className={styles.cart_header}>

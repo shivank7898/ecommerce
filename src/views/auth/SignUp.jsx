@@ -1,6 +1,8 @@
-import AuhtForm from "../../components/authForm/AuthForm";
 import styles from "./signUp.module.css";
+
+import AuhtForm from "../../components/authForm/AuthForm";
 import img from "../../assets/auth.png";
+
 const SignUp = () => {
   return (
     <div className={styles.SignUpSec_main}>

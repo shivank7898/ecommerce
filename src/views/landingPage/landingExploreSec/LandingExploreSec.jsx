@@ -15,14 +15,14 @@ const LandingExploreSec = () => {
             big="Explore Our Products"
             istimer={false}
           />
-          <div className={styles.LESec_custom_navigation}>
+          {/* <div className={styles.LESec_custom_navigation}>
             <div className={styles.LESec_custom_navigation_prev}>
               <FaArrowLeft style={{ width: "16px", height: "14px" }} />
             </div>
             <div className={styles.LESec_custom_navigation_next}>
               <FaArrowRight style={{ width: "16px", height: "14px" }} />
             </div>
-          </div>
+          </div> */}
         </div>
         <div className={styles.LESec_productCards}>
           <div className={styles.LESec_productCards_child}>

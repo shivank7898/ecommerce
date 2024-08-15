@@ -1,21 +1,22 @@
-import React from "react";
+import styles from "./button.module.css";
 
 const Button = ({
   onClick,
   type,
   text,
-  padding = "16px 48px",
-  backgroundColor = "#DB4444",
-  fontSize = "16px",
-  fontWeight = "500",
-  color = "#FAFAFA",
-  maxWidth = "234px",
-  textAlign = "center",
-  border = "none",
+  padding,
+  backgroundColor,
+  fontSize,
+  fontWeight,
+  color,
+  maxWidth,
+  textAlign,
+  border,
 }) => {
   return (
     <button
-    onClick={onClick}
+      className={styles.button}
+      onClick={onClick}
       type={type}
       style={{
         border: border,

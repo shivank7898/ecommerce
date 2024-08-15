@@ -33,12 +33,48 @@ p {
 .swiper-pagination-bullet-active {
   background: #db4444 !important;
   border: 2px solid white;
-  width: 14px !important;
-  height: 14px !important;
+  width: 1.1667rem !important; /* 14px / 12px */
+  height: 1.1667rem !important; /* 14px / 12px */
   /* color: ; */
 }
 
 .swiper-pagination-bullet {
-  width: 14px !important;
-  height: 14px !important;
+  width: 1.1667rem !important; /* 14px / 12px */
+  height: 1.1667rem !important; /* 14px / 12px */
+}
+
+.breadcumb_main {
+  font-family: "Poppins", sans-serif !important;
+  text-transform: capitalize;
+  margin-top: 5rem; /* 60px / 12px */
+  padding-left: 11.25rem; /* 135px / 12px */
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  html {
+    font-size: 8px;
+  }
+
+  .custom-navigation {
+    top: -70px !important;
+    right: 0px !important;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  html {
+    font-size: 10px;
+  }
+
+  .custom-navigation {
+    top: -70px !important;
+    right: 0px !important;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+  .custom-navigation {
+    top: -88px !important;
+    right: 100px !important;
+  }
 }

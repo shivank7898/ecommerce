@@ -1,8 +1,8 @@
 .LcSec_main {
   display: flex;
   justify-content: center;
-  margin: 0px 0px 70px;
-  padding: 80px 135px 0px;
+  margin: 0px 0px 5.833rem;
+  padding: 6.667rem 11.25rem 0px;
 }
 
 .LcSec_child {
@@ -10,32 +10,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  gap: 60px;
-  /* align-items: center; */
-  /* margin-bottom: 40px; */
-  max-width: 1170px;
+  gap: 5rem;
+  max-width: 97.5rem;
 }
 
 .LcSec_sectionHead {
-  max-width: 1170px;
+  max-width: 97.5rem;
 }
 
 .LcSec_carasoul {
-  /* max-width: 1170px; */
+  /* max-width: 97.5rem; */
 }
 
 .LcSec_carasoul_card {
-  max-width: 170px;
-  border: 1px solid #c6c6c6;
-  border-radius: 4px;
-  padding: 25px 55px;
+  max-width: 14.167rem;
+  border: 0.083rem solid #c6c6c6;
+  border-radius: 0.333rem;
+  padding: 2.083rem 4.583rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
-  gap: 16px;
+  font-size: 1.333rem;
+  gap: 1.333rem;
 }
 
 .LcSec_carasoul_card:hover {
@@ -44,7 +41,66 @@
 }
 
 .LfSec_divider {
-  /* min-width: 97.5rem; */
-  border: 0.0083rem solid #b3b3b360; /* 0.1px / 12 = 0.0083rem */
-  /* width: 100%; 90px / 12 = 7.5rem */
+  border: 0.0083rem solid #b3b3b360;
+}
+
+.swiper_prev {
+}
+
+.swiper_next {
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .LcSec_main {
+    display: flex;
+    justify-content: center;
+    margin: 2.833rem 0px;
+    padding: 1.25rem;
+  }
+
+  .LcSec_carasoul_card:hover {
+    color: #000;
+    background-color: transparent;
+  }
+
+  .swiper_next {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .swiper_prev {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .LcSec_main {
+    display: flex;
+    justify-content: center;
+    padding: 5.25rem;
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+  .LcSec_carasoul_card:hover {
+    color: #000;
+    background-color: transparent;
+  }
+
+  .swiper_next {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .swiper_prev {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+  .LcSec_main {
+    padding: 6.667rem 4.5rem 0;
+  }
 }

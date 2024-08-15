@@ -1,16 +1,16 @@
 .PrCard_main {
   display: flex;
   flex-direction: column;
-  width: 270px; /* Adjust width as needed */
-  max-width: 270px; /* Adjust width as needed */
+  width: 22.5rem; /* Adjust width as needed */
+  max-width: 22.5rem; /* Adjust width as needed */
   /* background-color: #F5F5F5; */
-  border-radius: 5px;
+  border-radius: 0.4167rem;
   flex: 1;
 }
 
 .PrCard_img {
-  border-radius: 5px;
-  padding: 35px;
+  border-radius: 0.4167rem;
+  padding: 2.9167rem;
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -20,19 +20,19 @@
 }
 
 .PrCard_img img {
-  width: 172px;
-  max-height: 180px;
-  min-height: 180px;
+  width: 14.3333rem;
+  max-height: 15rem;
+  min-height: 15rem;
   /* height: 152px; */
   object-fit: contain; /* Ensures image fills container */
 }
 
 .PrCard_Cartbtn {
-  font-size: 16px;
+  font-size: 1.3333rem;
   font-weight: 400;
   display: flex;
   justify-content: center;
-  padding: 9px 0px;
+  padding: 0.75rem 0;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -49,53 +49,53 @@
 }
 
 .PrCard_icons {
-  /* background-color: #333;  */
+  /* background-color: #333;  */
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.6667rem;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 1rem;
+  right: 1rem;
   display: flex;
   color: #fff;
 }
 
 .PrCard_icon {
-  height: 30px;
-  max-width: 30px;
-  width: 34px;
+  height: 2.5rem;
+  max-width: 2.5rem;
+  width: 2.8333rem;
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .PrCard_content {
-  padding-top: 16px;
+  padding-top: 1.3333rem;
 }
 
 .PrCard_title {
   color: #333;
-  font-size: 16px;
+  font-size: 1.3333rem;
   font-weight: 500;
 }
 
 .PrCard_price {
-  font-size: 16px;
+  font-size: 1.3333rem;
   font-weight: 500;
   color: #7f7f7f;
 }
 
 .PrCard_discount {
-  font-size: 16px;
+  font-size: 1.3333rem;
   font-weight: 500;
   color: #db4444;
-  margin-right: 5px;
+  margin-right: 0.4167rem;
 }
 
 .PrCard_Mrp {
-  font-size: 16px;
+  font-size: 1.3333rem;
   font-weight: 500;
   color: #7f7f7f;
   text-decoration: line-through;
@@ -104,7 +104,7 @@
 .PrCard_rating {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.6667rem;
 }
 
 .PrCard_ratingStar {
@@ -112,8 +112,8 @@
 }
 
 .star {
-  font-size: 20px;
-  margin-right: 2px;
+  font-size: 1.6667rem;
+  margin-right: 0.1667rem;
   color: #ffa41c;
 }
 
@@ -126,7 +126,7 @@
 }
 
 .PrCard_ratingStar p {
-  font-size: 24px;
+  font-size: 2rem;
   color: orange;
 }
 

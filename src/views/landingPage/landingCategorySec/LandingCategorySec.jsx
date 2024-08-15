@@ -9,9 +9,21 @@ const LandingCategorySec = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   const { data } = useSelector((state) => state.category);
 
-  // if (!data || !Array.isArray(data)) {
-  //   return null;
-  // }
+  const breakpoint = {
+    320: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView:5,
+      spaceBetween: 30,
+    },
+  };
+
   const duplicatedData = data && [...data, ...data, ...data];
   return (
     <div className={styles.LcSec_main}>
@@ -25,11 +37,12 @@ const LandingCategorySec = () => {
         </div>
         <div className={styles.LcSec_carasoul}>
           <Carasoul
+            breakpoint={breakpoint}
             isNavigation={true}
             slidesPerView={6}
             spaceBetween="30px"
-            next="swiper-next"
-            prev="swiper-prev"
+            next={styles.swiper_next}
+            prev={styles.swiper_prev}
             top="-105px"
             right="0px"
           >

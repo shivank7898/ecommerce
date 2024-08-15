@@ -2,37 +2,55 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 70px 140px 135px;
-  /* margin-bottom: 70px; */
+  padding: 5.833rem 11.667rem 11.25rem; /* 70px / 12px, 140px / 12px, and 135px / 12px */
+  /* margin-bottom: 5.833rem; /* 70px / 12px */
 }
 
 .aboutFouSec_sliderCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.667rem; /* 8px / 12px */
 }
 
 .aboutFouSec_sliderCard_img {
-  margin-bottom: 24px;
+  margin-bottom: 2rem; /* 24px / 12px */
 }
 
 .aboutFouSec_sliderCard_head {
   font-family: "Inter", sans-serif;
-  font-size: 32px;
+  font-size: 2.667rem; /* 32px / 12px */
   font-weight: 500;
 }
 
 .aboutFouSec_sliderCard_desc {
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 1.333rem; /* 16px / 12px */
+  margin-bottom: 0.667rem; /* 8px / 12px */
 }
 
-.aboutFouSec_sliderCard_icons{
-    display: flex;
-    gap: 16px;
+.aboutFouSec_sliderCard_icons {
+  display: flex;
+  gap: 1.333rem; /* 16px / 12px */
 }
 
-.aboutFouSec_sliderCard_icon{
-    width: 24px;
-    height: 24px;
+.aboutFouSec_sliderCard_icon {
+  width: 2rem; /* 24px / 12px */
+  height: 2rem; /* 24px / 12px */
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .aboutFouSec_main {
+    padding: 5.683rem 2.683rem;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .aboutFouSec_main {
+    padding: 5.25rem;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-width: 1224px) {
+ .aboutFouSec_main {
+    padding: 5.833rem 4.5remrem 11.25rem;
+  }
 }

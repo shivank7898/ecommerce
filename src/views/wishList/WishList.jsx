@@ -6,18 +6,19 @@ import styles from "./wishlist.module.css";
 import { useEffect } from "react";
 import { fetchProducts } from "../../redux/slices/productSlice";
 import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
+import Breadcrumb from "../../components/breadcrumb/Breadcumb";
 
 const WishList = () => {
   const { data } = useSelector((state) => state.product.products);
   const wish = useSelector((state) => state.wish);
   const dispatch = useDispatch();
-  const {handleRemoveWishlist} = useAddToCartAndWish()
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
   return (
     <div className={styles.wishList_main}>
+      <Breadcrumb className={styles.breadcrumb_wish} />
       <div className={styles.wishList_child}>
         <div className={styles.wishList_list}>
           <div className={styles.wishList_list_head}>

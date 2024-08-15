@@ -1,0 +1,16 @@
+.button {
+  padding: 1.3333rem 4rem;
+  background-color: #db4444;
+  font-size: 1.333rem;
+  font-weight: 500;
+  color: #fafafa;
+  max-width: 19.5rem;
+  text-align: center;
+  border: none;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .button {
+    padding: 8px 24px !important;
+  }
+}

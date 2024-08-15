@@ -21,6 +21,7 @@ import {
 import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 import { createStarRating } from "../../utils/starRating";
 import loader from "../../Animation - 1723303295037.json";
+import Breadcrumb from "../../components/breadcrumb/Breadcumb";
 
 const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
@@ -66,6 +67,7 @@ const ProductDetailPage = () => {
     <>
       {!loading && !detailsLoading ? (
         <div className={styles.productDetail_main}>
+          <Breadcrumb className={styles.breadcrumb_productDetails} prodcutdetails={true} productName={product?.title}/>
           <div className={styles.productDetail_child}>
             <div className={styles.productDetail_gallery}>
               <ProductGallery images={images} thumb={product?.image} />

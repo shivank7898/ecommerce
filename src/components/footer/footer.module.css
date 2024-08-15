@@ -17,7 +17,8 @@
 .footCols {
   width: 80%;
   justify-content: space-between;
-  /* gap: 7.25rem; */
+  flex-wrap: wrap;
+  gap: 1.25rem;
   display: flex;
   color: #ffff;
 }
