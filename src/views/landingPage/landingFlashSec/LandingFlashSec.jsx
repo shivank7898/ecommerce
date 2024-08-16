@@ -10,7 +10,7 @@ import Button from "../../../components/button/Button";
 
 const LandingFlashSec = () => {
   const ar = [1, 2, 3, 4, 5, 5, 5, 5, 5];
-  const { data } = useSelector((state) => state.product.products);
+  const { data, err } = useSelector((state) => state.product.products);
 
   const breakpoint = {
     320: {
@@ -48,28 +48,31 @@ const LandingFlashSec = () => {
       <div className={styles.LfSec_child}>
         <div className={styles.LfSec_sectionHead}>
           <SectionHead
+            istimer
             duration={10}
             unit="days"
             small="Today's"
             big="Flash Sales"
           />
         </div>
-        <div className={styles.LfSec_carasoul}>
-          <Carasoul
-            breakpoint={breakpoint}
-            isNavigation={true}
-            next={styles.swiper2_next}
-            prev={styles.swiper2_prev}
-            top="-85px"
-            right="138px"
-          >
-            {data?.map((item) => (
-              <SwiperSlide key={item.id}>
-                <ProductCard item={item} />
-              </SwiperSlide>
-            ))}
-          </Carasoul>
-        </div>
+        {err ? "Sorry Trouble Loading Products" :
+          <div className={styles.LfSec_carasoul}>
+            <Carasoul
+              breakpoint={breakpoint}
+              isNavigation={true}
+              next={styles.swiper2_next}
+              prev={styles.swiper2_prev}
+              top="-85px"
+              right="138px"
+            >
+              {data?.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <ProductCard item={item} />
+                </SwiperSlide>
+              ))}
+            </Carasoul>
+          </div>
+        }
         <div className={styles.LfSec_button}>
           <Button text="View All Products" />
         </div>

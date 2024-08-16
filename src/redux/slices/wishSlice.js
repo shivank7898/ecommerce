@@ -2,25 +2,32 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const wishSlice = createSlice({
   name: "wish",
-  initialState: JSON.parse(localStorage.getItem("wish")) || [],
+  initialState: {
+    items: JSON.parse(localStorage.getItem("wish")) || [],
+    notification: null,
+  },
   reducers: {
     addToWish: (state, action) => {
       const { product } = action.payload;
 
-      state.push({ product });
+      state.items?.push({ product });
       localStorage.setItem("wish", JSON.stringify(state));
+      state.notification = `Added ${product.title} to cart`;
     },
 
     removeWish: (state, action) => {
       const { id } = action.payload;
-      // console.log(id, "wish1",state);
-      const updatedWish = state.filter((item) => item.product.id !== id);
-      // console.log(updatedWish,"updated")
-      localStorage.setItem("wish", JSON.stringify(updatedWish));
-      return updatedWish;
+
+      state.items = state.items.filter((item) => item.product.id !== id);
+      localStorage.setItem("wish", JSON.stringify(state.items));
+      state.notification = "Removed item from cart";
+    },
+
+    clearWishNotification: (state) => {
+      state.notification = null;
     },
   },
 });
 
-export const { addToWish, removeWish } = wishSlice.actions;
+export const { addToWish, removeWish, clearWishNotification } = wishSlice.actions;
 export const wishReducer = wishSlice.reducer;

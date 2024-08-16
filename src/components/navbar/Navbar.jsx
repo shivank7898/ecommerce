@@ -3,30 +3,38 @@ import { Sling as Hamburger } from "hamburger-react";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { VscAccount } from "react-icons/vsc";
 import { BsCart3 } from "react-icons/bs";
+import { BsBoxSeam, BsStar, BsBoxArrowRight } from "react-icons/bs";
+import { MdCancel } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
-
 import styles from "./navbar.module.css";
-
 import Dropdown from "../dropdown/Dropdown";
 import search from "../../assets/search.svg";
 import { useSelector } from "react-redux";
 import { auth } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
-import { Drawer, List, ListItem, ListItemText } from "@mui/material";
+import {
+  ClickAwayListener,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
-  const loaction = useLocation();
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const location = useLocation();
   const [cartLength, setCartLength] = useState(0);
   const cart = useSelector((state) => state.cart);
   const { handleSignOut } = useAuth();
-  // console.log(user)
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartLength(storedCart.length);
-    // console.log(storedCart.length);
   }, [cart]);
+
+  const isActive = (path) =>
+    location.pathname === path ? styles.navActive : "";
 
   return (
     <main className={styles.main}>
@@ -49,47 +57,18 @@ const Navbar = () => {
             </Link>
             <div className={styles.navLinks}>
               <Link to={"/"}>
-                <p
-                  className={loaction.pathname === "/" ? styles.navActive : ""}
-                >
-                  Home
-                </p>
+                <p className={isActive("/")}>Home</p>
               </Link>
-              <p
-                className={
-                  loaction.pathname === "/contact" ? styles.navActive : ""
-                }
-              >
-                Contact
-              </p>
+              <Link to={"/contact"}>
+                <p className={isActive("/contact")}>Contact</p>
+              </Link>
               <Link to={"/about"}>
-                <p
-                  className={
-                    loaction.pathname === "/about" ? styles.navActive : ""
-                  }
-                >
-                  About
-                </p>
+                <p className={isActive("/about")}>About</p>
               </Link>
-              {!auth.currentUser ? (
+              {!auth.currentUser && (
                 <Link to={"/signUp"}>
-                  <p
-                    className={
-                      loaction.pathname === "/signUp" ? styles.navActive : ""
-                    }
-                  >
-                    Sign Up
-                  </p>
+                  <p className={isActive("/signUp")}>Sign Up</p>
                 </Link>
-              ) : (
-                <p
-                  className={
-                    loaction.pathname === "/signUp" ? styles.navActive : ""
-                  }
-                  onClick={handleSignOut}
-                >
-                  {auth.currentUser.displayName}
-                </p>
               )}
             </div>
           </div>
@@ -108,9 +87,49 @@ const Navbar = () => {
                   <div className={styles.navIcons_cart_count}>{cartLength}</div>
                 </div>
               </Link>
-              <Link to={"/account"}>
-                <VscAccount style={{ width: "24px", height: "24px" }} />
-              </Link>
+              <div style={{ position: "relative" }}>
+                <VscAccount
+                  style={{ width: "24px", height: "24px", cursor: "pointer" }}
+                  onClick={() => setDropdownOpen(!isDropdownOpen)}
+                />
+                {isDropdownOpen && (
+                  <ClickAwayListener onClickAway={() => setDropdownOpen(false)}>
+                    <div className={styles.dropdownMenu}>
+                      <ul>
+                        <Link
+                          to={"/account"}
+                          onClick={() => {
+                            setDropdownOpen(false);
+                          }}
+                        >
+                          <li>
+                            <VscAccount />
+                            Manage My Account
+                          </li>
+                        </Link>
+                        <li>
+                          <BsBoxSeam />
+                          My Order
+                        </li>
+                        <li>
+                          <MdCancel />
+                          My Cancellations
+                        </li>
+                        <li>
+                          <BsStar />
+                          My Reviews
+                        </li>
+                        {auth.currentUser && (
+                          <li onClick={handleSignOut}>
+                            <BsBoxArrowRight />
+                            Logout
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  </ClickAwayListener>
+                )}
+              </div>
             </div>
           </div>
           <div className={styles.hamburgerIcon}>
@@ -131,13 +150,12 @@ const Navbar = () => {
                     />
                   </ListItem>
                 )}
-
                 <ListItem button onClick={() => setOpen(false)}>
                   <Link to="/">
                     <ListItemText
                       disableTypography
                       primary="Home"
-                      className={styles.drawer_listItem}
+                      className={`${styles.drawer_listItem} ${isActive("/")}`}
                     />
                   </Link>
                 </ListItem>
@@ -146,7 +164,9 @@ const Navbar = () => {
                     <ListItemText
                       disableTypography
                       primary="About"
-                      className={styles.drawer_listItem}
+                      className={`${styles.drawer_listItem} ${isActive(
+                        "/about"
+                      )}`}
                     />
                   </Link>
                 </ListItem>
@@ -155,7 +175,9 @@ const Navbar = () => {
                     <ListItemText
                       primary="Contact"
                       disableTypography
-                      className={styles.drawer_listItem}
+                      className={`${styles.drawer_listItem} ${isActive(
+                        "/contact"
+                      )}`}
                     />
                   </Link>
                 </ListItem>
@@ -164,7 +186,9 @@ const Navbar = () => {
                     <ListItemText
                       primary="Wishlist"
                       disableTypography
-                      className={styles.drawer_listItem}
+                      className={`${styles.drawer_listItem} ${isActive(
+                        "/wishlist"
+                      )}`}
                     />
                   </Link>
                 </ListItem>
@@ -173,7 +197,9 @@ const Navbar = () => {
                     <ListItemText
                       primary="Cart"
                       disableTypography
-                      className={styles.drawer_listItem}
+                      className={`${styles.drawer_listItem} ${isActive(
+                        "/cart"
+                      )}`}
                     />
                   </Link>
                 </ListItem>
@@ -183,7 +209,9 @@ const Navbar = () => {
                       <ListItemText
                         disableTypography
                         primary="Sign Up"
-                        className={styles.drawer_listItem}
+                        className={`${styles.drawer_listItem} ${isActive(
+                          "/signUp"
+                        )}`}
                       />
                     </Link>
                   </ListItem>

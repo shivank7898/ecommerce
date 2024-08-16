@@ -23,18 +23,19 @@ const ProductCard = ({ isWish = false, item }) => {
   // console.log(item)
   const { handleAddToCart, handleAddToWishlist, handleRemoveWishlist } =
     useAddToCartAndWish();
-  const wish = useSelector((state) => state.wish);
+  const wish = useSelector((state) => state.wish.items);
   // console.log(wish)
   const [fill, setFill] = useState(false);
   const trimmedTitle = trimTitle(item?.title);
 
   useEffect(() => {
-    const existingProduct = wish.find(
+    // console.log(wish.items , "ksks")
+    const existingProduct = wish.items?.find(
       (wishItem) => wishItem.product.id === item.id
     );
     // console.log(existingProduct, "wishitem");
     setFill(!!existingProduct);
-  }, [wish, item]);
+  }, [wish.items, item]);
 
   return (
     <div className={styles.PrCard_main}>

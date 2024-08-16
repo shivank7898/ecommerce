@@ -1,16 +1,14 @@
-// src/components/ProductRow/ProductRow.js
-
-import React from "react";
-import styles from "./productRow.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/slices/cartSlice";
+import { IoCloseCircle } from "react-icons/io5";
+
+import styles from "./productRow.module.css";
+
 import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 
-const ProductRow = ({ item }) => {
-  const { handleAddToCart } = useAddToCartAndWish();
-  // console.log(item, "product");
+const ProductRow = ({ item, id }) => {
+  const { handleAddToCart, handleRemoveFromCart } = useAddToCartAndWish();
+  // console.log(item.product.id, "product");
 
   const handleQuantity = (action) => {
     if (action === "increment") {
@@ -20,11 +18,15 @@ const ProductRow = ({ item }) => {
       handleAddToCart({ product: item.product, quantity: -1 });
     }
   };
-  
+
   return (
     <div className={styles.productRow}>
       <div className={styles.productInfo}>
         <img src={item.product.image} className={styles.productImage} />
+        <IoCloseCircle
+          className={styles.productInfo_close}
+          onClick={() => handleRemoveFromCart({ id: item.product.id })}
+        />
         <span>{item.product.name}</span>
       </div>
       <div className={styles.productPrice}>${item.product.price}</div>

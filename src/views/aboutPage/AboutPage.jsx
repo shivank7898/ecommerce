@@ -8,7 +8,7 @@ import Breadcrumb from "../../components/breadcrumb/Breadcumb";
 const AboutPage = () => {
   return (
     <div>
-      <Breadcrumb className={styles.breadcrumb_about}/>
+      
       <AboutStorySec />
       <AboutAchivementSec />
       <AboutFoundersSec />

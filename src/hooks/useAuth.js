@@ -39,6 +39,8 @@ const useAuth = () => {
         displayName,
       };
 
+      console.log(userData, "user");
+
       dispatch(setUser(userData));
       navigate("/");
     } catch (error) {
@@ -73,6 +75,7 @@ const useAuth = () => {
 
   const handleSignOut = async () => {
     await signOut(auth);
+    navigate("/");
     // console.log("signned out");
   };
 

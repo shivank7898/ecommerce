@@ -24,6 +24,7 @@ a {
 
 .swiper {
   position: unset !important;
+  height: 100% !important;
 }
 
 p {

@@ -9,7 +9,7 @@ import Breadcrumb from "../../components/breadcrumb/Breadcumb";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const [cartItem, setCartItem] = useState(cart);
+  const [cartItem, setCartItem] = useState(cart.items);
 
   const getTotal = () => {
     return cartItem.reduce((total, item) => {
@@ -38,7 +38,7 @@ const Cart = () => {
             <div className={styles.header_subtotal}>Subtotal</div>
           </div>
           {cartItem.map((item) => (
-            <ProductRow key={item.product.id} item={item} />
+            <ProductRow key={item.product.id} item={item} id={item.id} />
           ))}
           <div className={styles.cart_buttons}>
             <Button

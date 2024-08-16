@@ -41,7 +41,8 @@
 
 .LbSec_banner img {
   width: 110%;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
@@ -100,6 +101,7 @@
 
   .LbSec_banner img {
     width: 100%;
+    /* height: 100%; */
   }
 }
 

@@ -11,6 +11,7 @@ import Breadcrumb from "../../components/breadcrumb/Breadcumb";
 const WishList = () => {
   const { data } = useSelector((state) => state.product.products);
   const wish = useSelector((state) => state.wish);
+  // console.log(wish)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const WishList = () => {
             />
           </div>
           <div className={styles.wishList_list_cards}>
-            {wish.map((item) => (
+            {wish.items.items?.map((item) => (
               <ProductCard isWish={true} item={item?.product} />
             ))}
           </div>

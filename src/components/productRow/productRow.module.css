@@ -10,6 +10,7 @@
 }
 
 .productInfo {
+  position: relative;
   justify-content: center;
   flex: 1;
   display: flex;
@@ -54,6 +55,14 @@
 }
 
 .quantityDisplay {
+}
+
+.productInfo_close {
+  font-size: 2rem;
+  position: absolute;
+  color: #db4444;
+  top: -10%;
+  left: 34%;
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 768px) {

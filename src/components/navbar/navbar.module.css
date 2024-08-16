@@ -112,6 +112,11 @@
   text-underline-offset: 7px;
 }
 
+.drawer_listItem_active {
+  color: #f00; /* Active color for drawer items */
+  font-weight: bold;
+}
+
 .navIcons_cart {
   position: relative;
 }
@@ -169,10 +174,49 @@
   transition: background-color 0.3s ease;
   color: #db4444;
 }
+.dropdownMenu {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: rgba(51, 51, 51, 0.7);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 240px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  opacity: 1;
+}
+
+.dropdownMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdownMenu li {
+  color: #fff;
+  padding: 12px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropdownMenu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdownMenu li svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
 
 @media screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .navMain {
-    padding: 1rem; /* 40px 0 16px */
+    padding: 1rem;
   }
 
   .navChild {
