@@ -17,14 +17,7 @@ const Cart = () => {
     }, 0);
   };
 
-  useEffect(() => {
-    if (cart.length > 0) {
-      setCartItem(cart);
-    } else {
-      const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-      setCartItem(storedCart);
-    }
-  }, [cart]);
+  
 
   return (
     <div className={styles.cart_main}>
@@ -37,7 +30,7 @@ const Cart = () => {
             <div className={styles.header_quantity}>Quantity</div>
             <div className={styles.header_subtotal}>Subtotal</div>
           </div>
-          {cartItem.map((item) => (
+          {cart.items.map((item) => (
             <ProductRow key={item.product.id} item={item} id={item.id} />
           ))}
           <div className={styles.cart_buttons}>

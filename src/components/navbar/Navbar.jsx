@@ -24,14 +24,8 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
-  const [cartLength, setCartLength] = useState(0);
   const cart = useSelector((state) => state.cart);
   const { handleSignOut } = useAuth();
-
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartLength(storedCart.length);
-  }, [cart]);
 
   const isActive = (path) =>
     location.pathname === path ? styles.navActive : "";
@@ -84,7 +78,7 @@ const Navbar = () => {
               <Link to={"/cart"}>
                 <div className={styles.navIcons_cart}>
                   <BsCart3 style={{ width: "24px", height: "24px" }} />
-                  <div className={styles.navIcons_cart_count}>{cartLength}</div>
+                  <div className={styles.navIcons_cart_count}>{cart.items.length}</div>
                 </div>
               </Link>
               <div style={{ position: "relative" }}>

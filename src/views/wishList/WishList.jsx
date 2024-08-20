@@ -32,7 +32,7 @@ const WishList = () => {
             />
           </div>
           <div className={styles.wishList_list_cards}>
-            {wish.items.items?.map((item) => (
+            {wish.items?.map((item) => (
               <ProductCard isWish={true} item={item?.product} />
             ))}
           </div>
