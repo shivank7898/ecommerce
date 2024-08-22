@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { fetchProducts } from "../../redux/slices/productSlice";
 import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 import Breadcrumb from "../../components/breadcrumb/Breadcumb";
+import { Link } from "react-router-dom";
 
 const WishList = () => {
   const { data } = useSelector((state) => state.product.products);
@@ -40,12 +41,14 @@ const WishList = () => {
         <div className={styles.wishList_suggestion}>
           <div className={styles.wishList_list_head}>
             <SectionHead small={"Just For You"} color={"#000"} />
-            <Button
-              text="See All"
-              backgroundColor="transparent"
-              color="#000"
-              border="1px solid #00000080"
-            />
+            <Link to={"/product"}>
+              <Button
+                text="See All"
+                backgroundColor="transparent"
+                color="#000"
+                border="1px solid #00000080"
+              />
+            </Link>
           </div>
           <div className={styles.wishList_list_cards}>
             {data?.slice(11, 15).map((item) => (

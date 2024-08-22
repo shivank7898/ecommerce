@@ -51,10 +51,10 @@ const ProductDetailPage = () => {
   };
 
   useEffect(() => {
-    const existingProduct = wish.find(
+    const existingProduct = wish.items?.find(
       (wishItem) => wishItem.product.id === product?.id
     );
-    // console.log(existingProduct, "wishitem");
+
     setFill(!!existingProduct);
   }, [wish, product]);
 
@@ -67,10 +67,14 @@ const ProductDetailPage = () => {
     <>
       {!loading && !detailsLoading ? (
         <div className={styles.productDetail_main}>
-          <Breadcrumb className={styles.breadcrumb_productDetails} prodcutdetails={true} productName={product?.title}/>
+          <Breadcrumb
+            className={styles.breadcrumb_productDetails}
+            prodcutdetails={true}
+            productName={product?.title || "N.A"}
+          />
           <div className={styles.productDetail_child}>
             <div className={styles.productDetail_gallery}>
-              <ProductGallery images={images} thumb={product?.image} />
+              <ProductGallery images={images} thumb={product?.image || "N.A"} />
             </div>
             <div className={styles.productDetail_details}>
               <div className={styles.productDetail_details_top}>
@@ -78,10 +82,9 @@ const ProductDetailPage = () => {
                   {product?.title}
                 </div>
                 <div className={styles.productDetail_details_rating}>
-                  {createStarRating(product?.rating)}{" "}
+                  {createStarRating(product?.rating)}
                   <span>
-                    {" "}
-                    ( {product?.rating.count} ) |{" "}
+                    ( {product?.rating.count || "N.A"} ) |
                     <span className={styles.details_rating_stock}>
                       In Stock
                     </span>
@@ -89,10 +92,10 @@ const ProductDetailPage = () => {
                 </div>
                 <div className={styles.productDetail_details_price}>
                   {" "}
-                  ${product?.price}
+                  ${product?.price || "N.A"}
                 </div>
                 <div className={styles.productDetail_details_desc}>
-                  {product?.description}
+                  {product?.description || "N.A"}
                 </div>
               </div>
               <div className={styles.productDetail_details_divider}></div>

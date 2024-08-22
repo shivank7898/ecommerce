@@ -4,6 +4,7 @@ import ProductCard from "../../../components/productCard/ProductCard";
 import SectionHead from "../../../components/sectionHead/SectionHead";
 import styles from "./landingExploreSec.module.css";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const LandingExploreSec = () => {
   const { data } = useSelector((state) => state.product.products);
   return (
@@ -28,20 +29,22 @@ const LandingExploreSec = () => {
           <div className={styles.LESec_productCards_child}>
             {data?.slice(0, 4).map((item) => (
               <>
-                <ProductCard item={item} />
+                <ProductCard item={item} key={item.id} />
               </>
             ))}
           </div>
           <div className={styles.LESec_productCards_child}>
             {data?.slice(10, 14).map((item) => (
               <>
-                <ProductCard item={item} />
+                <ProductCard item={item} key={item.id} />
               </>
             ))}
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button text="View All Products" />
+          <Link to={"/product"}>
+            <Button text="View All Products" />
+          </Link>
         </div>
       </div>
     </div>

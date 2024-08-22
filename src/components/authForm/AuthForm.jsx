@@ -57,6 +57,8 @@ const AuhtForm = ({ signUp = "true" }) => {
           }
           if (!values.password) {
             err.password = "Required";
+          } else if (values.password.length < 6) {
+            err.password = "Password should be at least 6 digits";
           }
 
           return err;
@@ -76,33 +78,51 @@ const AuhtForm = ({ signUp = "true" }) => {
               ""
             ) : (
               <>
-                <Field
-                  type="text"
-                  onChange={(e) => handleChange(e, setFieldValue)}
-                  // value={values.name}
-                  name="name"
-                  placeholder="Name"
-                  className={styles.authfrmSec_form_field}
-                />
-                <ErrorMessage name="name" />
+                <div className={styles.authfrmSec_form_inputs}>
+                  <Field
+                    type="text"
+                    onChange={(e) => handleChange(e, setFieldValue)}
+                    // value={values.name}
+                    name="name"
+                    placeholder="Name"
+                    className={styles.authfrmSec_form_field}
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component={"div"}
+                    className={styles.authfrmSec_error}
+                  />
+                </div>
               </>
             )}
-            <Field
-              type="email"
-              onChange={(e) => handleChange(e, setFieldValue)}
-              name="email"
-              placeholder="Email or Phone Number"
-              className={styles.authfrmSec_form_field}
-            />
-            <ErrorMessage name="email" />
-            <Field
-              type="password"
-              onChange={(e) => handleChange(e, setFieldValue)}
-              name="password"
-              placeholder="Password"
-              className={styles.authfrmSec_form_field}
-            />
-            <ErrorMessage name="password" />
+            <div className={styles.authfrmSec_form_inputs}>
+              <Field
+                type="email"
+                onChange={(e) => handleChange(e, setFieldValue)}
+                name="email"
+                placeholder="Email or Phone Number"
+                className={styles.authfrmSec_form_field}
+              />
+              <ErrorMessage
+                name="email"
+                component={"div"}
+                className={styles.authfrmSec_error}
+              />
+            </div>
+            <div className={styles.authfrmSec_form_inputs}>
+              <Field
+                type="password"
+                onChange={(e) => handleChange(e, setFieldValue)}
+                name="password"
+                placeholder="Password"
+                className={styles.authfrmSec_form_field}
+              />
+              <ErrorMessage
+                name="password"
+                component={"div"}
+                className={styles.authfrmSec_error}
+              />
+            </div>
             {!signUp ? (
               <div className={styles.authfrmSec_form_loginButton}>
                 <Button

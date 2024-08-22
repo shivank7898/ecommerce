@@ -7,6 +7,7 @@ import SectionHead from "../../../components/sectionHead/SectionHead";
 import ProductCard from "../../../components/productCard/ProductCard";
 import Carasoul from "../../../components/carasoul/Carasoul";
 import Button from "../../../components/button/Button";
+import { Link } from "react-router-dom";
 
 const LandingFlashSec = () => {
   const ar = [1, 2, 3, 4, 5, 5, 5, 5, 5];
@@ -55,7 +56,9 @@ const LandingFlashSec = () => {
             big="Flash Sales"
           />
         </div>
-        {err ? "Sorry Trouble Loading Products" :
+        {err ? (
+          "Sorry Trouble Loading Products"
+        ) : (
           <div className={styles.LfSec_carasoul}>
             <Carasoul
               breakpoint={breakpoint}
@@ -72,9 +75,11 @@ const LandingFlashSec = () => {
               ))}
             </Carasoul>
           </div>
-        }
+        )}
         <div className={styles.LfSec_button}>
-          <Button text="View All Products" />
+          <Link to={"/product"}>
+            <Button text="View All Products" />
+          </Link>
         </div>
         <div className={styles.LfSec_divider}></div>
       </div>

@@ -27,7 +27,12 @@
   gap: 3.333rem; /* 40px / 12px */
 }
 
+.authfrmSec_form_inputs{  
+  width: 100%;
+}
+
 .authfrmSec_form_field {
+  width: 100%;
   background-color: transparent;
   padding: 0.333rem 0; /* 4px / 12px */
   font-size: 1.333rem; /* 16px / 12px */
@@ -76,6 +81,12 @@
 
 .authfrmSec_form_forgot {
   color: #db4444;
+}
+
+.authfrmSec_error {
+  color: #db4444;
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 768px) {

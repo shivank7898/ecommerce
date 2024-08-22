@@ -60,7 +60,7 @@ input {
 
 .error {
   color: #db4444;
-  font-size: 1rem; /* 12px / 12px */
+  font-size: 1rem; 
 }
 
 .form_button {

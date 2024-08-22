@@ -19,7 +19,7 @@ const LandingCategorySec = () => {
       spaceBetween: 20,
     },
     1024: {
-      slidesPerView:5,
+      slidesPerView: 5,
       spaceBetween: 30,
     },
   };
@@ -47,20 +47,20 @@ const LandingCategorySec = () => {
             right="0px"
           >
             {duplicatedData?.map((item) => (
-              <SwiperSlide>
+              <SwiperSlide key={item?.id}>
                 <div className={styles.LcSec_carasoul_card}>
                   <CiCamera style={{ width: "56px", height: "56px" }} />
 
                   <div
                     style={{
-                      whiteSpace: "nowrap", // Prevents text from wrapping
-                      overflow: "hidden", // Hides overflowing text
-                      textOverflow: "ellipsis", // Adds ellipsis (…) for overflowing text
-                      display: "block", // Ensures the div is a block-level element
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "block",
                       width: "100%",
                     }}
                   >
-                    {item}
+                    {item || "N.A"}
                   </div>
                 </div>
               </SwiperSlide>

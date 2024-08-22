@@ -8,11 +8,6 @@ const initialState = {
     err: null,
     data: null,
   },
-  limit: {
-    loading: false,
-    err: null,
-    data: null,
-  },
   productDetails: {
     loading: false,
     err: null,
@@ -23,25 +18,14 @@ const initialState = {
 export const fetchProducts = createAsyncThunk(
   "product/fetchProducts",
   async () => {
-    // console.log("first");
     try {
-      const response = await axios.get(`https://fakestoreapi.com/products`);
-      // console.log(response.data)
-      return response.data;
+      const response = await axios.get(`${url}/products`);
+      const data = response.data;
+      return data;
     } catch (err) {
-      console.error(err);
-    }
-  }
-);
-
-export const limitProducts = createAsyncThunk(
-  "products/limitProducts",
-  async (limit, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(`${url}/products?limit=${limit}`);
-      return response.data;
-    } catch (err) {
-      return rejectWithValue(err.response.data || "An error occurred");
+      console.error("Error fetching products, using fallback data.", err);
+      return fallbackData;
+      throw err;
     }
   }
 );
@@ -49,10 +33,9 @@ export const limitProducts = createAsyncThunk(
 export const fetchProductDetails = createAsyncThunk(
   "products/fetchProductDetails",
   async (id, { rejectWithValue }) => {
-    // console.log(id)
     try {
       const response = await axios.get(`${url}/products/${id}`);
-      //   console.log(response.data)
+
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data || "An error occurred");
@@ -79,19 +62,7 @@ const productsSlice = createSlice({
         state.products.err = action.payload || action.error.message;
         state.products.loading = false;
       })
-      // Fetching limited products
-      .addCase(limitProducts.pending, (state) => {
-        state.limit.loading = true;
-        state.limit.err = null;
-      })
-      .addCase(limitProducts.fulfilled, (state, action) => {
-        state.limit.data = action.payload;
-        state.limit.loading = false;
-      })
-      .addCase(limitProducts.rejected, (state, action) => {
-        state.limit.err = action.payload || action.error.message;
-        state.limit.loading = false;
-      })
+
       // Fetch product details
       .addCase(fetchProductDetails.pending, (state) => {
         state.productDetails.loading = true;

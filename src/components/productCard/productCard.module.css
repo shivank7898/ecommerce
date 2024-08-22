@@ -114,20 +114,11 @@
 .star {
   font-size: 1.6667rem;
   margin-right: 0.1667rem;
-  color: #ffa41c;
-}
-
-.filledStar {
-  color: gold; /* Color for filled stars */
-}
-
-.emptyStar {
-  color: lightgray; /* Color for empty stars */
 }
 
 .PrCard_ratingStar p {
   font-size: 2rem;
-  color: orange;
+  color: #ffa41c;
 }
 
 .PrCard_ratingCount {

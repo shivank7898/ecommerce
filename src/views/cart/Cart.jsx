@@ -6,6 +6,7 @@ import styles from "./cart.module.css";
 import Button from "../../components/button/Button";
 import ProductRow from "../../components/productRow/ProductRow";
 import Breadcrumb from "../../components/breadcrumb/Breadcumb";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -17,11 +18,9 @@ const Cart = () => {
     }, 0);
   };
 
-  
-
   return (
     <div className={styles.cart_main}>
-      <Breadcrumb className={styles.breadcrumb_cart}/>
+      <Breadcrumb className={styles.breadcrumb_cart} />
       <div className={styles.cart_child}>
         <div className={styles.cart_products}>
           <div className={styles.cart_header}>
@@ -34,12 +33,14 @@ const Cart = () => {
             <ProductRow key={item.product.id} item={item} id={item.id} />
           ))}
           <div className={styles.cart_buttons}>
-            <Button
-              text={"Return To Shop"}
-              backgroundColor="transparent"
-              color="#000"
-              border="1px solid #00000080"
-            />
+            <Link to={"/product"}>
+              <Button
+                text={"Return To Shop"}
+                backgroundColor="transparent"
+                color="#000"
+                border="1px solid #00000080"
+              />
+            </Link>
             <Button
               text={"Update Cart"}
               backgroundColor="transparent"

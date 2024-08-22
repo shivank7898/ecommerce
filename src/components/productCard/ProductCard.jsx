@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 import styles from "./productCard.module.css";
 
 import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
-// import {create}
 import { useSelector } from "react-redux";
 import { createStarRating } from "../../utils/starRating";
 
 const trimTitle = (title) => {
+  if (!title) return "No Title Available";
   const trimmedTitle = title?.slice(0, 20);
 
   return trimmedTitle?.length < title?.length
@@ -20,27 +20,28 @@ const trimTitle = (title) => {
 };
 
 const ProductCard = ({ isWish = false, item }) => {
-  // console.log(item)
   const { handleAddToCart, handleAddToWishlist, handleRemoveWishlist } =
     useAddToCartAndWish();
-  const wish = useSelector((state) => state.wish.items);
-  console.log(wish)
+  const wish = useSelector((state) => state.wish);
+
   const [fill, setFill] = useState(false);
   const trimmedTitle = trimTitle(item?.title);
 
   useEffect(() => {
-    // console.log(wish.items , "ksks")
-    const existingProduct = wish.find(
+    const existingProduct = wish.items?.find(
       (wishItem) => wishItem.product.id === item.id
     );
-    // console.log(existingProduct, "wishitem");
+
     setFill(!!existingProduct);
   }, [wish, item]);
 
   return (
     <div className={styles.PrCard_main}>
       <div className={styles.PrCard_img}>
-        <img src={item?.image} alt="productImg" />
+        <img
+          src={item?.image || "placeholder-image.jpg"}
+          alt={item?.title || "product"}
+        />
         <div
           className={styles.PrCard_Cartbtn}
           onClick={() => handleAddToCart({ product: item, quantity: 1 })}
@@ -94,8 +95,11 @@ const ProductCard = ({ isWish = false, item }) => {
           <p className={styles.PrCard_title}>{trimmedTitle}</p>
           <div className={styles.PrCard_price}>
             <p className={styles.PrCard_discount}>
-              ${item?.price}{" "}
-              <span className={styles.PrCard_Mrp}>${item?.price + 100}</span>
+              ${item?.price || "N/A"}{" "}
+              <span className={styles.PrCard_Mrp}>
+                {" "}
+                ${item?.price ? item.price + 100 : "N/A"}
+              </span>
             </p>
           </div>
           {!isWish && (
@@ -103,7 +107,9 @@ const ProductCard = ({ isWish = false, item }) => {
               <div className={styles.PrCard_ratingStar}>
                 {createStarRating(item?.rating)}
               </div>
-              <p className={styles.PrCard_ratingCount}>{item?.rating?.count}</p>
+              <p className={styles.PrCard_ratingCount}>
+                {item?.rating.count || 0}
+              </p>
             </div>
           )}
         </div>

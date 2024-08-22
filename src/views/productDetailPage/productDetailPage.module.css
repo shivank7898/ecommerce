@@ -247,6 +247,7 @@
 }
 
 .breadcrumb_productDetails {
+  max-width: 97.5rem;
   width: 100%;
   display: flex;
   justify-content: start;

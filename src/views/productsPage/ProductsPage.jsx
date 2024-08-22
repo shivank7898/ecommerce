@@ -20,7 +20,7 @@ const ProductsPage = () => {
       <Breadcrumb />
       <div className={styles.productPage_child}>
         {data?.map((item) => (
-          <div key={item.id} className={styles.productPage_card}>
+          <div key={item?.id} className={styles.productPage_card}>
             <ProductCard item={item} />
           </div>
         ))}
