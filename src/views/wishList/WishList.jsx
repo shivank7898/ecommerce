@@ -4,19 +4,17 @@ import ProductCard from "../../components/productCard/ProductCard";
 import SectionHead from "../../components/sectionHead/SectionHead";
 import styles from "./wishlist.module.css";
 import { useEffect } from "react";
-import { fetchProducts } from "../../redux/slices/productSlice";
-import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 import Breadcrumb from "../../components/breadcrumb/Breadcumb";
 import { Link } from "react-router-dom";
+import { getProductsAction } from "../../redux/actions/action";
 
 const WishList = () => {
   const { data } = useSelector((state) => state.product.products);
   const wish = useSelector((state) => state.wish);
-  // console.log(wish)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(getProductsAction());
   }, [dispatch]);
   return (
     <div className={styles.wishList_main}>

@@ -14,14 +14,14 @@ import img3 from "../../assets/card3.png";
 import Button from "../../components/button/Button";
 import SectionHead from "../../components/sectionHead/SectionHead";
 import ProductCard from "../../components/productCard/ProductCard";
-import {
-  fetchProductDetails,
-  fetchProducts,
-} from "../../redux/slices/productSlice";
 import useAddToCartAndWish from "../../hooks/useAddToCartAndWish";
 import { createStarRating } from "../../utils/starRating";
 import loader from "../../Animation - 1723303295037.json";
 import Breadcrumb from "../../components/breadcrumb/Breadcumb";
+import {
+  getProductDetailsAction,
+  getProductsAction,
+} from "../../redux/actions/action";
 
 const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
@@ -39,6 +39,7 @@ const ProductDetailPage = () => {
   const { data: product } = useSelector(
     (state) => state.product.productDetails
   );
+
   const images = [product?.image, img2, img2, img3];
 
   const handleQuantity = (action) => {
@@ -59,8 +60,8 @@ const ProductDetailPage = () => {
   }, [wish, product]);
 
   useEffect(() => {
-    dispatch(fetchProducts());
-    dispatch(fetchProductDetails(id));
+    dispatch(getProductDetailsAction(id));
+    dispatch(getProductsAction());
   }, [dispatch, id]);
 
   return (

@@ -69,4 +69,8 @@
   .quantityInput_child {
     width: 52%;
   }
+
+  .productInfo_close {
+    left: 5%;
+  }
 }

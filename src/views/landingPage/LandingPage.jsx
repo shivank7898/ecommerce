@@ -12,9 +12,11 @@ import LandingBanner2Sec from "./landingbanner2Sec/LandingBanner2Sec";
 import LandingExploreSec from "./landingExploreSec/LandingExploreSec";
 import LandingArrivalSec from "./landingArrivalSec/LandingArrivalSec";
 import LandingSeciveSec from "./landingSeciveSec/LandingSeciveSec";
-import { fetchProducts } from "../../redux/slices/productSlice";
-import { fetchCategory } from "../../redux/slices/categorieSlice";
 import loader from "../../Animation - 1723303295037.json";
+import {
+  getCategoryAction,
+  getProductsAction,
+} from "../../redux/actions/action";
 
 const LandingPage = () => {
   const { loading } = useSelector((state) => state.product.products);
@@ -26,8 +28,8 @@ const LandingPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
-    dispatch(fetchCategory());
+    dispatch(getProductsAction());
+    dispatch(getCategoryAction());
   }, []);
   return (
     <>
